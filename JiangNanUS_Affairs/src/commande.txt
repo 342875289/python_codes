@@ -1,0 +1,27 @@
+f:
+cd F:\EclipseWorkspace\python_codes\JiangNanUS_Affairs\src\mysite
+
+#运行服务器
+python manage.py runserver
+
+#创建项目 mysite
+django-admin startproject mysite
+
+#创建application polls
+python manage.py startapp polls
+
+#创建管理员账户
+python manage.py createsuperuser
+
+
+#用model建立数据库表
+python manage.py makemigrations dj_test
+python manage.py migrate
+
+
+
+python manage.py makemigrations polls
+
+#输出相关SQL语句
+python manage.py sqlmigrate polls 0001
+

@@ -1,0 +1,7 @@
+<p>{% url "dj_test:name" %}</p>
+
+<form action="{% url "dj_test:name" %}" method="post">
+	{% csrf_token %}
+	{{ form.as_p }}
+	<input type="submit" value="Submit"/>
+</form>
