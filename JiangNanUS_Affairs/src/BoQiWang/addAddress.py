@@ -100,3 +100,36 @@ context = response.read().decode('UTF8')
 #输出网页内容
 print(context)
 
+
+
+url_login='http://www.boqii.com/userinfo/User/editAddress'
+#HTTP头部
+http_headers = {'Host':'www.boqii.com',
+'Connection':'keep-alive',
+'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+'User-Agent':'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Maxthon/4.4.8.2000 Chrome/30.0.1599.101 Safari/537.36',
+'Content-Type':'application/x-www-form-urlencoded',
+'Accept-Language':'zh-CN',
+'Referer':'http://www.boqii.com/userinfo/User/addAddress',
+'DNT':'1'
+}
+#创建Request对象
+request = urllib.request.Request(url_login,headers=http_headers)
+#POST_Data
+post_data = {'name':'明坤',
+'province':'32',
+'city':'3202',
+'street':'滨湖区蠡湖大道1800号江南大学北区',
+'mobile':'18861823199',
+'telephone':'',
+'zipcode':'214122',
+'isDefault':'1'
+}
+post_data_code= urllib.parse.urlencode(post_data).encode(encoding='UTF8')
+#发送请求
+response = urllib.request.urlopen(request,data=post_data_code,timeout=5)
+#保存网页内容
+context = response.read().decode('UTF8')
+#输出网页内容
+print(context)
+

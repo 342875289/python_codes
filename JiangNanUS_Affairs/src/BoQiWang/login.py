@@ -20,9 +20,8 @@ request.add_header('Accept', 'text/html,application/xhtml+xml,application/xml;q=
 request.add_header('User-Agent','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Maxthon/4.4.8.2000 Chrome/30.0.1599.101 Safari/537.36')
 request.add_header('Content-Type','application/x-www-form-urlencoded')
 request.add_header('DNT','1')
-request.add_header('Referer','http://www.pocketuni.net/')
 #还需要解码
-#request.add_header('Accept-Encoding','gzip,deflate')
+request.add_header('Referer','http://www.boqii.com/')
 request.add_header('Accept-Language','zh-CN')
 
 #POST_Data
@@ -39,8 +38,10 @@ response = urllib.request.urlopen(request,data=post_data_code,timeout=60)
 #保存网页内容
 context = response.read().decode('UTF8')
 #输出网页内容
-print(context)
 
+
+print(context)
+print(cookieJarInMemory)
     
 
 
