@@ -267,12 +267,25 @@ def getPrize():
     response = urllib.request.urlopen(request,data=post_data_code,timeout=20)
     #保存网页内容
     context = response.read().decode('UTF8')
+        
+    #确认提交商品兑换请求
+    url_login='http://www.boqii.com/userinfo/Coupon/AjaxCouponsExchange'
+    http_headers['Referer']='http://www.boqii.com/userinfo/Coupon/prize'
+    #创建Request对象
+    request = urllib.request.Request(url_login,headers=http_headers)
+    #POST_Data
+    post_data = {'couponId':prize_number,'pid':'17566'}
+    post_data_code= urllib.parse.urlencode(post_data).encode(encoding='UTF8')
+    #发送请求
+    response = urllib.request.urlopen(request,data=post_data_code,timeout=20)
+    #保存网页内容
+    context = response.read().decode('UTF8')
     #输出结果
-    print(context) 
+    #print(context) 
     context = eval(context)
     if context['status']=='ok':
         print("商品兑换成功")
     else:
         print("商品兑换失败")
-        print(context)
+        print(context)   
 #

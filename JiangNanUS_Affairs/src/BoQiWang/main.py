@@ -1,5 +1,5 @@
-from BoQiWang.func import *
-
+#from BoQiWang.func import *
+import func
 #login('18861823199','woaiwojia',vcode)
 #addAddress()
 
@@ -13,5 +13,5 @@ addAddress()
 '''
 
 
-login('13245845249','woaiwojia')
-getPrize()
+func.login('13245845249','woaiwojia')
+func.getPrize()
