@@ -1,2 +1,7 @@
+import re
 
-print(u'\u60a8\u7684\u7528\u6237\u540d\u6216\u8005\u5bc6\u7801\u4e0d\u6b63\u786e\uff0c\u8bf7\u91cd\u65b0\u8f93\u5165\uff01')
+
+a = '<p>WJZ16421212</p>'
+
+re_vcode = re.compile(r'<p>(WJZ\d+)<')
+print(re_vcode.search(a).group(1))
