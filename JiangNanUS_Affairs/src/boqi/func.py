@@ -288,4 +288,3 @@ def getPrize():
     else:
         print("商品兑换失败")
         print(context)   
-#
