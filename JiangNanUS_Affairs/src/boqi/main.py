@@ -1,16 +1,12 @@
 import func
-#login('18861823199','woaiwojia',vcode)
-#addAddress()
 
-
-
-mobile_number = '13450612534'
+mobile_number = '13612658449'
 ps = 'woaiwojia'
 func.register(mobile_number,ps)
 func.addAddress()
 func.getPrize()
 
 
-#func.login('15695212694','woaiwojia')
+# func.login('15695212694','woaiwojia')
 # func.addAddress()
-#func.getPrize()
+# func.getPrize()

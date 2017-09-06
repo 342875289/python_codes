@@ -127,15 +127,26 @@ def addAddress():
     request = urllib.request.Request(url_login,headers=http_headers)
     #POST_Data
     post_data = {'uniq':get_uniq_num,
-    'name':'明坤',
+    'name':'吕静',
     'province':'32',
     'city':'3202',
-    'street':'滨湖区蠡湖大道1800号江南大学北区',
-    'mobile':'18861823199',
+    'county':'320206',
+    'street':'临港街道亚包大道2号',
+    'mobile':'15852652748',
     'telephone':'',
-    'zipcode':'214122',
+    'zipcode':'214000',
     'isDefault':'1'
     }
+#     post_data = {'uniq':get_uniq_num,
+#     'name':'明坤',
+#     'province':'32',
+#     'city':'3202',
+#     'street':'滨湖区蠡湖大道1800号江南大学北区',
+#     'mobile':'18861823199',
+#     'telephone':'',
+#     'zipcode':'214122',
+#     'isDefault':'1'
+#     }
     post_data_code= urllib.parse.urlencode(post_data).encode(encoding='UTF8')
     #发送请求
     response = urllib.request.urlopen(request,data=post_data_code,timeout=5)
