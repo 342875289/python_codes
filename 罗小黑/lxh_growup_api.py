@@ -205,8 +205,8 @@ def api_giveVitality():
     return requset_str
 
 #好友互动
-def api_touchFriend(friend_id):
-    requset_str = '{"Header":{"MsgID":16213},"Msg":{"PlayerId":'+str(friend_id)+',"ActionType":1}}'
+def api_touchFriend(friend_id,ActionType):
+    requset_str = '{"Header":{"MsgID":16213},"Msg":{"PlayerId":'+str(friend_id)+',"ActionType":'+str(ActionType)+'}}'
     print("进行好友互动")
     return requset_str
 
