@@ -249,8 +249,13 @@ def api_get_pets_by_zhuawawa_2(Index):
     print("抓娃娃第二步-抓")
     return requset_str
 #
-#新账号任务1-猫村理财
-def api_newAccountTask1():
+#新账号任务11-猫村理财
+def api_newAccountTask11():
+    requset_str = '{"Header":{"MsgID":17129},"Msg":{}}'
+    print("猫村理财")
+    return requset_str
+#新账号任务12-猫村理财
+def api_newAccountTask12():
     requset_str = '{"Header":{"MsgID":17127},"Msg":{}}'
     print("猫村理财")
     return requset_str
