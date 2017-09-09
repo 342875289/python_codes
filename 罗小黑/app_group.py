@@ -246,9 +246,9 @@ def step_two():
     #加入公会
     ws.send(lxh_growup_api.api_addLegion(50197))
     #投资会馆
-    ws.send(lxh_growup_api.api_newAccountTask6(1))
-    ws.send(lxh_growup_api.api_newAccountTask6(1))
-    ws.send(lxh_growup_api.api_newAccountTask6(1))
+    ws.send(lxh_growup_api.api_newAccountTask6(1,2))
+    ws.send(lxh_growup_api.api_newAccountTask6(1,2))
+    ws.send(lxh_growup_api.api_newAccountTask6(1,2))
     time.sleep(1)
     #新账号任务系列
     ws.send(lxh_growup_api.api_newAccountTask11())
@@ -271,9 +271,9 @@ def step_two():
 def do_dailyTask():
     global ws
     #投资会馆
-    ws.send(lxh_growup_api.api_newAccountTask6(1))
-    ws.send(lxh_growup_api.api_newAccountTask6(1))
-    ws.send(lxh_growup_api.api_newAccountTask6(1))
+    ws.send(lxh_growup_api.api_newAccountTask6(1,2))
+    ws.send(lxh_growup_api.api_newAccountTask6(1,2))
+    ws.send(lxh_growup_api.api_newAccountTask6(1,2))
     '''
     ws.send(lxh_growup_api.api_get_dailytask_reward(1))
     ws.send(lxh_growup_api.api_newAccountTask9())

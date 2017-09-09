@@ -282,29 +282,14 @@ def step_two():
     ws.send(lxh_growup_api.api_newAccountTask8(700))
     ws.send(lxh_growup_api.api_newAccountTask8(1000))
 
-def do_dailyTask():
+def do_dailyTask(isgetExp):
     global ws
-    
-    ws.send(lxh_growup_api.api_get_dailytask_reward(1))
     ws.send(lxh_growup_api.api_newAccountTask9())
-    ws.send(lxh_growup_api.api_get_dailytask_reward(2))
-    ws.send(lxh_growup_api.api_dailyTask1())
-    ws.send(lxh_growup_api.api_get_dailytask_reward(8))
     ws.send(lxh_growup_api.api_dailyTask2())
-    ws.send(lxh_growup_api.api_get_dailytask_reward(4))
     ws.send(lxh_growup_api.api_dailyTask3())
-    ws.send(lxh_growup_api.api_get_dailytask_reward(6))
-    ws.send(lxh_growup_api.api_dailyTask4())
-    ws.send(lxh_growup_api.api_get_dailytask_reward(7))
-    ws.send(lxh_growup_api.api_dailyTask6())
-    ws.send(lxh_growup_api.api_dailyTask5())
-    ws.send(lxh_growup_api.api_newAccountTask7(20))
-    ws.send(lxh_growup_api.api_newAccountTask7(50))
     ws.send(lxh_growup_api.api_touchFriend(9401559,4))
     ws.send(lxh_growup_api.api_touchFriend(9401559,1))  
-    ws.send(lxh_growup_api.api_get_dailytask_reward(12))     
     do_something(ws)
-    
     ws.send(lxh_growup_api.api_newAccountTask4(20))
     ws.send(lxh_growup_api.api_newAccountTask4(25))
     ws.send(lxh_growup_api.api_newAccountTask4(30))
@@ -312,13 +297,68 @@ def do_dailyTask():
     ws.send(lxh_growup_api.api_newAccountTask4(34))
     ws.send(lxh_growup_api.api_newAccountTask4(36))
     ws.send(lxh_growup_api.api_newAccountTask4(38))
-    
     ws.send(lxh_growup_api.api_newAccountTask2(20))
     ws.send(lxh_growup_api.api_newAccountTask2(25))
     ws.send(lxh_growup_api.api_newAccountTask2(30))
     ws.send(lxh_growup_api.api_newAccountTask2(35))
-    
-    
+    ws.send(lxh_growup_api.api_newAccountTask2(40))
+    ws.send(lxh_growup_api.api_newAccountTask2(45))
+    ws.send(lxh_growup_api.api_newAccountTask7(20))
+    ws.send(lxh_growup_api.api_newAccountTask7(50))
+    if isgetExp:
+        ws.send(lxh_growup_api.api_get_dailytask_reward(1))
+        ws.send(lxh_growup_api.api_get_dailytask_reward(2))
+        ws.send(lxh_growup_api.api_get_dailytask_reward(4))
+        ws.send(lxh_growup_api.api_get_dailytask_reward(6))
+        ws.send(lxh_growup_api.api_get_dailytask_reward(12)) 
+
+
+def do_dailyTask_once(isgetExp):
+    global ws,item_number,equipId
+    #开启并领取猫粮宴
+    ws.send(lxh_growup_api.api_dailyTask6())
+    ws.send(lxh_growup_api.api_dailyTask5())
+    #兑换猫饭金币
+    ws.send(lxh_growup_api.api_dailyTask1())
+    ws.send(lxh_growup_api.api_dailyTask4())
+    #每日签到
+    ws.send(lxh_growup_api.api_newAccountTask5())  
+    ws.send(lxh_growup_api.api_dailyTask12())
+    ws.send(lxh_growup_api.api_dailyTask14())
+    #买体力
+    ws.send(lxh_growup_api.api_newAccountTask9())  
+    ws.send(lxh_growup_api.api_newAccountTask9()) 
+    ws.send(lxh_growup_api.api_newAccountTask9()) 
+    #投资会馆等级
+    ws.send(lxh_growup_api.api_newAccountTask6(5,1))
+    ws.send(lxh_growup_api.api_newAccountTask6(5,1))
+    ws.send(lxh_growup_api.api_newAccountTask6(6,1))
+    #购买商店物品两次
+    ws.send(lxh_growup_api.api_get_shop_items())
+    time.sleep(5)
+    if item_number[0]!=0 :
+        ws.send(lxh_growup_api.api_buy_shop_items(item_number[0]))
+        ws.send(lxh_growup_api.api_buy_shop_items(item_number[1]))
+    #装备
+    if equipId != 0:
+        #装备强化
+        ws.send(lxh_growup_api.api_dailyTask9(equipId))
+        #装备熔炼
+        ws.send(lxh_growup_api.api_dailyTask8(equipId))
+    #喂榨菜丹
+    ws.send(lxh_growup_api.api_dailyTask7())
+    ws.send(lxh_growup_api.api_dailyTask7())
+    ws.send(lxh_growup_api.api_dailyTask7())
+    if isgetExp:
+        ws.send(lxh_growup_api.api_get_dailytask_reward(8))
+        ws.send(lxh_growup_api.api_get_dailytask_reward(7))
+        ws.send(lxh_growup_api.api_get_dailytask_reward(20)) 
+        ws.send(lxh_growup_api.api_get_dailytask_reward(5))
+        ws.send(lxh_growup_api.api_get_dailytask_reward(9))
+        ws.send(lxh_growup_api.api_get_dailytask_reward(10))
+        ws.send(lxh_growup_api.api_get_dailytask_reward(13))
+        ws.send(lxh_growup_api.api_newAccountTask7(20))
+        ws.send(lxh_growup_api.api_newAccountTask7(50))
 def do_something(ws):
     global email_list
     print("Do_Something")
@@ -444,9 +484,10 @@ def dailyTask():
             login()
             checklogin()
             if(level>level_limit):
-                print("账号:"+str(int(var_accountNumber.get())-1)+'超出等级限制,不进行每日任务')
+                do_dailyTask(False)
+                print("账号:"+str(int(var_accountNumber.get())-1)+'超出等级限制,不领取每日任务经验奖励')
             else:
-                do_dailyTask()
+                do_dailyTask(True)
                 print("账号:"+str(int(var_accountNumber.get())-1)+'完成每日任务')
             time.sleep(2)
             logout()
@@ -466,40 +507,10 @@ def dailyTask_once():
             login()
             checklogin()
             if(level>level_limit):
-                print("账号:"+str(int(var_accountNumber.get())-1)+'超出等级限制,不进行一次性每日任务')
+                do_dailyTask_once(False)
+                print("账号:"+str(int(var_accountNumber.get())-1)+'超出等级限制,不领取一次性每日任务经验奖励')
             else:
-                ws.send(lxh_growup_api.api_newAccountTask5())  
-                ws.send(lxh_growup_api.api_dailyTask12())
-                ws.send(lxh_growup_api.api_dailyTask14())
-                #买体力
-                ws.send(lxh_growup_api.api_newAccountTask9())  
-                ws.send(lxh_growup_api.api_newAccountTask9()) 
-                ws.send(lxh_growup_api.api_newAccountTask9()) 
-                #投资会馆等级
-                ws.send(lxh_growup_api.api_newAccountTask6(2))
-                ws.send(lxh_growup_api.api_newAccountTask6(2))
-                ws.send(lxh_growup_api.api_newAccountTask6(2))
-                ws.send(lxh_growup_api.api_get_dailytask_reward(20)) 
-                #购买商店物品两次
-                ws.send(lxh_growup_api.api_get_shop_items())
-                time.sleep(5)
-                if item_number[0]!=0 :
-                    ws.send(lxh_growup_api.api_buy_shop_items(item_number[0]))
-                    ws.send(lxh_growup_api.api_buy_shop_items(item_number[1]))
-                    ws.send(lxh_growup_api.api_get_dailytask_reward(5))
-                #装备
-                if equipId != 0:
-                    #装备强化
-                    ws.send(lxh_growup_api.api_dailyTask9(equipId))
-                    ws.send(lxh_growup_api.api_get_dailytask_reward(9))
-                    #装备熔炼
-                    ws.send(lxh_growup_api.api_dailyTask8(equipId))
-                    ws.send(lxh_growup_api.api_get_dailytask_reward(10))
-                #喂榨菜丹
-                ws.send(lxh_growup_api.api_dailyTask7())
-                ws.send(lxh_growup_api.api_dailyTask7())
-                ws.send(lxh_growup_api.api_dailyTask7())
-                ws.send(lxh_growup_api.api_get_dailytask_reward(13))
+                do_dailyTask_once(True)
                 print("账号:"+str(int(var_accountNumber.get())-1)+'完成一次性每日任务')
             time.sleep(5)
             logout()
@@ -529,48 +540,19 @@ def onekey():
     def dailyTask():
         global ws,level,level_limit
         if(level>level_limit):
-            print("账号:"+str(int(var_accountNumber.get())-1)+'超出等级限制,不进行每日任务')
+            do_dailyTask(False)
+            print("账号:"+str(int(var_accountNumber.get())-1)+'超出等级限制,不领取每日任务经验奖励')
         else:
-            do_dailyTask()
+            do_dailyTask(True)
             print("账号:"+str(int(var_accountNumber.get())-1)+'完成每日任务')
         time.sleep(1)
     def dailyTask_once():
         global ws,item_number,equipId
         if(level>level_limit):
-            print("账号:"+str(int(var_accountNumber.get())-1)+'超出等级限制,不进行一次性每日任务')
+            do_dailyTask_once(False)
+            print("账号:"+str(int(var_accountNumber.get())-1)+'超出等级限制,不领取一次性每日任务经验奖励')
         else:
-            ws.send(lxh_growup_api.api_newAccountTask5())  
-            ws.send(lxh_growup_api.api_dailyTask12())
-            ws.send(lxh_growup_api.api_dailyTask14())
-            #买体力
-            ws.send(lxh_growup_api.api_newAccountTask9())  
-            ws.send(lxh_growup_api.api_newAccountTask9()) 
-            ws.send(lxh_growup_api.api_newAccountTask9()) 
-            #投资会馆等级
-            ws.send(lxh_growup_api.api_newAccountTask6(2))
-            ws.send(lxh_growup_api.api_newAccountTask6(2))
-            ws.send(lxh_growup_api.api_newAccountTask6(2))
-            ws.send(lxh_growup_api.api_get_dailytask_reward(20)) 
-            #购买商店物品两次
-            ws.send(lxh_growup_api.api_get_shop_items())
-            time.sleep(2)
-            if item_number[0]!=0 :
-                ws.send(lxh_growup_api.api_buy_shop_items(item_number[0]))
-                ws.send(lxh_growup_api.api_buy_shop_items(item_number[1]))
-                ws.send(lxh_growup_api.api_get_dailytask_reward(5))
-            #装备
-            if equipId != 0:
-                #装备强化
-                ws.send(lxh_growup_api.api_dailyTask9(equipId))
-                ws.send(lxh_growup_api.api_get_dailytask_reward(9))
-                #装备熔炼
-                ws.send(lxh_growup_api.api_dailyTask8(equipId))
-                ws.send(lxh_growup_api.api_get_dailytask_reward(10))
-            #喂榨菜丹
-            ws.send(lxh_growup_api.api_dailyTask7())
-            ws.send(lxh_growup_api.api_dailyTask7())
-            ws.send(lxh_growup_api.api_dailyTask7())
-            ws.send(lxh_growup_api.api_get_dailytask_reward(13))
+            do_dailyTask_once(True)
             print("账号:"+str(int(var_accountNumber.get())-1)+'完成一次性每日任务')
         time.sleep(1)
             
@@ -579,11 +561,11 @@ def onekey():
         count_finish = 0
         count_isBoss = 0
         count_noTili = 0
-        equipId = 0
-        item_number[0] = 0
         autoFromNumber = int(var_autoFromNumber.get() ) 
         autoToNumber = int(var_autoToNumber.get() )
         for i in range(autoFromNumber,autoToNumber):
+            equipId = 0
+            item_number[0] = 0
             isBoss = 0
             var_accountNumber.set(i)
             login()
@@ -617,9 +599,9 @@ def oldaccount_dailytask():
     ws.send(lxh_growup_api.api_touchFriend(9494242,1)) 
     ws.send(lxh_growup_api.api_get_dailytask_reward(12)) 
     ws.send(lxh_growup_api.api_newAccountTask5())
-    ws.send(lxh_growup_api.api_newAccountTask6(1))
-    ws.send(lxh_growup_api.api_newAccountTask6(1))
-    ws.send(lxh_growup_api.api_newAccountTask6(1))
+    ws.send(lxh_growup_api.api_newAccountTask6(1,1))
+    ws.send(lxh_growup_api.api_newAccountTask6(1,1))
+    ws.send(lxh_growup_api.api_newAccountTask6(1,1))
     ws.send(lxh_growup_api.api_get_dailytask_reward(20)) 
     for i in range(7,0,-1):
         ws.send(lxh_growup_api.api_dailyTask15(i))
