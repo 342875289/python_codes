@@ -84,7 +84,7 @@ def getToken(username,device_uuid,sign,isdebug = 0):
     if isdebug == 1:
         #输出网页内容
         print(context)
-    
+    '''
     #获取通知，服务器列表-40001
     url='http://lxh-global.bjmanya.com:9001/?data={"Header":{"MsgID":40001},"Msg":{"Platform":12,"Version":'+version+',"Channel":70001,"AccountId":'+'"'+str(userdata['userid'])+'","Account":"'+userdata['bind_name']+'"}}'
     #创建Request对象
@@ -166,7 +166,7 @@ def getToken(username,device_uuid,sign,isdebug = 0):
     context = response.read().decode('utf-8')
     #输出网页内容
     #print(context)
-    
+    '''
     account_data = {'ticket':ticket,'account_id':str(userdata['userid']),'version_str':version_str}
     return account_data
 
