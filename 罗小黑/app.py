@@ -456,6 +456,8 @@ def AutoKill():
             isBoss = 0
             login()
             checklogin()
+            #领取鱼干
+            ws.send(lxh_growup_api.api_get_fish()) 
             while 1 :
                 if (level > (level_oldaccount - 20)) and (isBoss == 1) :
                     print("发现Boss,退出扫荡")
@@ -522,6 +524,8 @@ def onekey():
     count_noTili = 0
     def AutoKill():
         global tili,ws,isBoss,level_oldaccount,level,count_finish,count_isBoss,count_noTili
+        #领取鱼干
+        ws.send(lxh_growup_api.api_get_fish()) 
         while 1 :
             if (level > (level_oldaccount - 20)) and (isBoss == 1) :
                 print("发现Boss,退出扫荡")
