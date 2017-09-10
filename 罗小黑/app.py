@@ -477,9 +477,9 @@ def dailyTask_once():
                 ws.send(lxh_growup_api.api_newAccountTask9()) 
                 ws.send(lxh_growup_api.api_newAccountTask9()) 
                 #投资会馆等级
-                ws.send(lxh_growup_api.api_newAccountTask6(2))
-                ws.send(lxh_growup_api.api_newAccountTask6(2))
-                ws.send(lxh_growup_api.api_newAccountTask6(2))
+                ws.send(lxh_growup_api.api_newAccountTask6(1,1))
+                ws.send(lxh_growup_api.api_newAccountTask6(1,1))
+                ws.send(lxh_growup_api.api_newAccountTask6(1,1))
                 ws.send(lxh_growup_api.api_get_dailytask_reward(20)) 
                 #购买商店物品两次
                 ws.send(lxh_growup_api.api_get_shop_items())
@@ -548,9 +548,9 @@ def onekey():
             ws.send(lxh_growup_api.api_newAccountTask9()) 
             ws.send(lxh_growup_api.api_newAccountTask9()) 
             #投资会馆等级
-            ws.send(lxh_growup_api.api_newAccountTask6(2))
-            ws.send(lxh_growup_api.api_newAccountTask6(2))
-            ws.send(lxh_growup_api.api_newAccountTask6(2))
+            ws.send(lxh_growup_api.api_newAccountTask6(1,1))
+            ws.send(lxh_growup_api.api_newAccountTask6(1,1))
+            ws.send(lxh_growup_api.api_newAccountTask6(1,1))
             ws.send(lxh_growup_api.api_get_dailytask_reward(20)) 
             #购买商店物品两次
             ws.send(lxh_growup_api.api_get_shop_items())
@@ -618,9 +618,9 @@ def oldaccount_dailytask():
     ws.send(lxh_growup_api.api_touchFriend(9494242,1)) 
     ws.send(lxh_growup_api.api_get_dailytask_reward(12)) 
     ws.send(lxh_growup_api.api_newAccountTask5())
-    ws.send(lxh_growup_api.api_newAccountTask6(1))
-    ws.send(lxh_growup_api.api_newAccountTask6(1))
-    ws.send(lxh_growup_api.api_newAccountTask6(1))
+    ws.send(lxh_growup_api.api_newAccountTask6(1,1))
+    ws.send(lxh_growup_api.api_newAccountTask6(1,1))
+    ws.send(lxh_growup_api.api_newAccountTask6(1,1))
     ws.send(lxh_growup_api.api_get_dailytask_reward(20)) 
     for i in range(7,0,-1):
         ws.send(lxh_growup_api.api_dailyTask15(i))
