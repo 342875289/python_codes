@@ -6,10 +6,21 @@ print(int(time.time()))
 import hashlib   
 
 m2 = hashlib.md5()   
-m2.update('lxh-global.bjmanya.com:9009/user/login?account=qq342875289appid=100000check_code=device=iphonedevice_uuid1965FBA4-13AA-49C7-BC00-B6356627C74BosIOSos_vers10.3.3password000000source'.encode(encoding='utf_8', errors='strict'))   
+#f01fbef4ed9b1061cb4aaebd60f54657
+'''
+  var_13_1.appid = INPUT_VAR_0_.appid
+    var_13_1.account = INPUT_VAR_0_.account
+    var_13_1.password = INPUT_VAR_0_.pwd
+    var_13_1.check_code = INPUT_VAR_0_.check_code
+    var_13_1.source = INPUT_VAR_0_.source
+    var_13_1.device = INPUT_VAR_0_.device
+    var_13_1.device_uuid = INPUT_VAR_0_.device_uuid
+    var_13_1.os = INPUT_VAR_0_.os
+    var_13_1.os_vers = INPUT_VAR_0_.os_vers 
+
+sign=8f2e144d2962539a2ab1491596c0a22c    
+'''
+m2.update('Energy=90#NodeId=32#RandomSeed=1504891131#Result=3#f01fbef4ed9b1061cb4aaebd60f54657'.encode(encoding='utf_8', errors='strict'))   
 print( m2.hexdigest()   )
-#cd8929990165f5644f1c66c969efd300
-for i in [3,10,13,20,23]:
-    print(i)
 
 

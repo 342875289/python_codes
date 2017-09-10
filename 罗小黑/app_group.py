@@ -8,38 +8,22 @@ import json
 import lxhWebsocketApi
 import lxh_growup_api
 #记录账号信息
-account = [ {'account_name':"ming1",'device_id':"C4BAAFE8-C98D-49C2-B30F-1A7EA5364BAE",'sign':"f4780b5d9f7226dd149e1d5ba01d08ce"},
-            {'account_name':"ming2",'device_id':"00000000-0000-0000-0000-000000000000",'sign':"9ed3339c5462c5f0cd351d5421918439"},
-            {'account_name':"ming3",'device_id':"1965FBA4-13AA-49C7-BC00-B6356627C74B",'sign':"500af7ae47afac6747874f45dcc2fc8d"},
-            {'account_name':"ming4",'device_id':"00000000-0000-0000-0000-000000000000",'sign':"4a754ec554ce05e80f81d6a3e0e09d44"},
-            {'account_name':"ming5",'device_id':"00000000-0000-0000-0000-000000000000",'sign':"24dc23aadadbd58dad798405623b9a09"},
-            {'account_name':"ming6",'device_id':"00000000-0000-0000-0000-000000000000",'sign':"be34338837b689c49234d7af552c5df2"},
-            {'account_name':"ming7",'device_id':"00000000-0000-0000-0000-000000000000",'sign':"f0a2f2ec8a164c215869162602aef4d6"},
-            {'account_name':"ming8",'device_id':"00000000-0000-0000-0000-000000000000",'sign':"dc9aa8a53d08348e38e0866c5bcdff4c"},
-            {'account_name':"ming9",'device_id':"00000000-0000-0000-0000-000000000000",'sign':"0c1d3bb64900727d3848ab7e1a32e0a9"},
-            
-            {'account_name':"ming10",'device_id':"00000000-0000-0000-0000-000000000000",'sign':"ee15dbe4a066fac7a5da5b711a292e42"},
-            {'account_name':"ming11",'device_id':"00000000-0000-0000-0000-000000000000",'sign':"14ce13b71a96632e61bdbabe3834b8a2"},
-            {'account_name':"ming12",'sign':"ce15bc39963ca495d9b8b4b1523ddfc4",'device_id':"00000000-0000-0000-0000-000000000000"},
-            {'account_name':"ming13",'sign':"04a7945ab3d2eb614da73e132995e959",'device_id':"00000000-0000-0000-0000-000000000000"},
-            {'account_name':"ming14",'sign':"55597c8934e3a8aa9ecdcea88688cdc8",'device_id':"00000000-0000-0000-0000-000000000000"},
-            {'account_name':"ming15",'sign':"69accd65d599da2742ca07defee276ab",'device_id':"00000000-0000-0000-0000-000000000000"},
-            {'account_name':"ming16",'sign':"70bdfb0f8f50798018495b0994f979d0",'device_id':"00000000-0000-0000-0000-000000000000"},
-            {'account_name':"ming17",'sign':"2747e94ccd4da716a1444fe345ed56da",'device_id':"00000000-0000-0000-0000-000000000000"},
-            {'account_name':"ming18",'sign':"2af61b1c7dfb265880129caca2a33452",'device_id':"00000000-0000-0000-0000-000000000000"},
-            {'account_name':"ming19",'sign':"6147ce70cafb80aa3d2a3d468ae641d6",'device_id':"00000000-0000-0000-0000-000000000000"},
-            {'account_name':"ming20",'sign':"44cfed1c4612014975a01a43347700c7",'device_id':"00000000-0000-0000-0000-000000000000"},
-            {'account_name':"ming21",'sign':"0700a1092866264ca29e891c5b291cc2",'device_id':"00000000-0000-0000-0000-000000000000"},
-            {'account_name':"ming22",'sign':"7be72abd6787c08072cc9312a136323e",'device_id':"00000000-0000-0000-0000-000000000000"},
-            {'account_name':"ming23",'sign':"ee8b3bde15f0a1ea3785d5d3da4c03b9",'device_id':"00000000-0000-0000-0000-000000000000"},
-            {'account_name':"ming24",'sign':"d50135a4bebbccc2998b36c9ad38eb6f",'device_id':"00000000-0000-0000-0000-000000000000"},
-            {'account_name':"ming25",'sign':"297e83e9fab6d207df053e3034bed7ea",'device_id':"00000000-0000-0000-0000-000000000000"},
-            {'account_name':"ming26",'sign':"a7fefccd546ba78619c712cedd45d1f0",'device_id':"00000000-0000-0000-0000-000000000000"},
-            {'account_name':"mingmingming",'device_id':"C4BAAFE8-C98D-49C2-B30F-1A7EA5364BAE",'sign':"689af8192ab5cf92a38dfbe285eff944"},
-          ]
+account = [ {'account_name':"mingg1",'device_id':"1965FBA4-13AA-49C7-BC00-B6356627C74B",'sign':"3ec7cce0b2274e4f3311aa00ccaf0ecf"},
+            {'account_name':"mingg2",'device_id':"1965FBA4-13AA-49C7-BC00-B6356627C74B",'sign':"249774b15b42c9127ab221c513941bd2"},
+            {'account_name':"mingg3",'device_id':"1965FBA4-13AA-49C7-BC00-B6356627C74B",'sign':"9a9c6d01f0dee2461e44e4df6747e2ef"},
+            {'account_name':"mingg4",'device_id':"1965FBA4-13AA-49C7-BC00-B6356627C74B",'sign':"bb308171c573e531e1b91820fe05ce1e"},
+            {'account_name':"mingg5",'device_id':"1965FBA4-13AA-49C7-BC00-B6356627C74B",'sign':"d00fc7211f308d7b1e2b391c30543614"},
+            {'account_name':"mingg6",'device_id':"1965FBA4-13AA-49C7-BC00-B6356627C74B",'sign':"625d291b8055cc07d9ce3d27de505f0a"},
+            {'account_name':"mingg7",'device_id':"1965FBA4-13AA-49C7-BC00-B6356627C74B",'sign':"8f2e144d2962539a2ab1491596c0a22c"},
+            {'account_name':"mingg8",'device_id':"1965FBA4-13AA-49C7-BC00-B6356627C74B",'sign':"bb308171c573e531e1b91820fe05ce1e"},
+            {'account_name':"mingg9",'device_id':"1965FBA4-13AA-49C7-BC00-B6356627C74B",'sign':"bb308171c573e531e1b91820fe05ce1e"},
+            {'account_name':"mingg10",'device_id':"1965FBA4-13AA-49C7-BC00-B6356627C74B",'sign':"bb308171c573e531e1b91820fe05ce1e"},
+            {'account_name':"mingg11",'device_id':"1965FBA4-13AA-49C7-BC00-B6356627C74B",'sign':"bb308171c573e531e1b91820fe05ce1e"},
+            ]
 
-            
-            
+
+
+
 #选择使用哪个账号
 account_num = 0
 #选择进第几个服务器
@@ -207,7 +191,7 @@ def step_one():
     global account_num,ws
     print("开始执行-第1步")
     #创建新角色
-    ws.send(lxh_growup_api.api_creatname("明明明"+var_accountNumber.get()))
+    ws.send(lxh_growup_api.api_creatname("明明明公会"+var_accountNumber.get()))
     #黑粉催更
     ws.send(lxh_growup_api.api_getitem())
     #修改阵容-加入千针
@@ -258,19 +242,21 @@ def step_two():
     for i in range(120):
         ws.send(lxh_growup_api.api_kill(1, 1, 1))
     #添加大号为好友
-    ws.send(lxh_growup_api.api_addfriend(9401559))
+    #ws.send(lxh_growup_api.api_addfriend(9401559))
     #加入公会
-    ws.send(lxh_growup_api.api_addLegion(47713))
-    
+    ws.send(lxh_growup_api.api_addLegion(50197))
+    #投资会馆
+    ws.send(lxh_growup_api.api_newAccountTask6(1,2))
+    ws.send(lxh_growup_api.api_newAccountTask6(1,2))
+    ws.send(lxh_growup_api.api_newAccountTask6(1,2))
+    time.sleep(1)
     #新账号任务系列
-    ws.send(lxh_growup_api.api_newAccountTask1())
+    ws.send(lxh_growup_api.api_newAccountTask11())
+    ws.send(lxh_growup_api.api_newAccountTask12())
     ws.send(lxh_growup_api.api_newAccountTask2(10))
     ws.send(lxh_growup_api.api_newAccountTask2(15))
     ws.send(lxh_growup_api.api_newAccountTask4(10))
     ws.send(lxh_growup_api.api_newAccountTask5())
-    #ws.send(lxh_growup_api.api_newAccountTask6())
-    #ws.send(lxh_growup_api.api_newAccountTask6())
-    #ws.send(lxh_growup_api.api_newAccountTask6())
     ws.send(lxh_growup_api.api_newAccountTask7(20))
     ws.send(lxh_growup_api.api_newAccountTask8(20))
     ws.send(lxh_growup_api.api_newAccountTask8(50))
@@ -282,14 +268,33 @@ def step_two():
     ws.send(lxh_growup_api.api_newAccountTask8(700))
     ws.send(lxh_growup_api.api_newAccountTask8(1000))
 
-def do_dailyTask(isgetExp):
+def do_dailyTask():
     global ws
+    #投资会馆
+    ws.send(lxh_growup_api.api_newAccountTask6(1,2))
+    ws.send(lxh_growup_api.api_newAccountTask6(1,2))
+    ws.send(lxh_growup_api.api_newAccountTask6(1,2))
+    '''
+    ws.send(lxh_growup_api.api_get_dailytask_reward(1))
     ws.send(lxh_growup_api.api_newAccountTask9())
+    ws.send(lxh_growup_api.api_get_dailytask_reward(2))
+    ws.send(lxh_growup_api.api_dailyTask1())
+    ws.send(lxh_growup_api.api_get_dailytask_reward(8))
     ws.send(lxh_growup_api.api_dailyTask2())
+    ws.send(lxh_growup_api.api_get_dailytask_reward(4))
     ws.send(lxh_growup_api.api_dailyTask3())
+    ws.send(lxh_growup_api.api_get_dailytask_reward(6))
+    ws.send(lxh_growup_api.api_dailyTask4())
+    ws.send(lxh_growup_api.api_get_dailytask_reward(7))
+    ws.send(lxh_growup_api.api_dailyTask6())
+    ws.send(lxh_growup_api.api_dailyTask5())
+    ws.send(lxh_growup_api.api_newAccountTask7(20))
+    ws.send(lxh_growup_api.api_newAccountTask7(50))
     ws.send(lxh_growup_api.api_touchFriend(9401559,4))
     ws.send(lxh_growup_api.api_touchFriend(9401559,1))  
+    ws.send(lxh_growup_api.api_get_dailytask_reward(12))     
     do_something(ws)
+    
     ws.send(lxh_growup_api.api_newAccountTask4(20))
     ws.send(lxh_growup_api.api_newAccountTask4(25))
     ws.send(lxh_growup_api.api_newAccountTask4(30))
@@ -297,68 +302,13 @@ def do_dailyTask(isgetExp):
     ws.send(lxh_growup_api.api_newAccountTask4(34))
     ws.send(lxh_growup_api.api_newAccountTask4(36))
     ws.send(lxh_growup_api.api_newAccountTask4(38))
+    
     ws.send(lxh_growup_api.api_newAccountTask2(20))
     ws.send(lxh_growup_api.api_newAccountTask2(25))
     ws.send(lxh_growup_api.api_newAccountTask2(30))
     ws.send(lxh_growup_api.api_newAccountTask2(35))
-    ws.send(lxh_growup_api.api_newAccountTask2(40))
-    ws.send(lxh_growup_api.api_newAccountTask2(45))
-    ws.send(lxh_growup_api.api_newAccountTask7(20))
-    ws.send(lxh_growup_api.api_newAccountTask7(50))
-    if isgetExp:
-        ws.send(lxh_growup_api.api_get_dailytask_reward(1))
-        ws.send(lxh_growup_api.api_get_dailytask_reward(2))
-        ws.send(lxh_growup_api.api_get_dailytask_reward(4))
-        ws.send(lxh_growup_api.api_get_dailytask_reward(6))
-        ws.send(lxh_growup_api.api_get_dailytask_reward(12)) 
-
-
-def do_dailyTask_once(isgetExp):
-    global ws,item_number,equipId
-    #开启并领取猫粮宴
-    ws.send(lxh_growup_api.api_dailyTask6())
-    ws.send(lxh_growup_api.api_dailyTask5())
-    #兑换猫饭金币
-    ws.send(lxh_growup_api.api_dailyTask1())
-    ws.send(lxh_growup_api.api_dailyTask4())
-    #每日签到
-    ws.send(lxh_growup_api.api_newAccountTask5())  
-    ws.send(lxh_growup_api.api_dailyTask12())
-    ws.send(lxh_growup_api.api_dailyTask14())
-    #买体力
-    ws.send(lxh_growup_api.api_newAccountTask9())  
-    ws.send(lxh_growup_api.api_newAccountTask9()) 
-    ws.send(lxh_growup_api.api_newAccountTask9()) 
-    #投资会馆等级
-    ws.send(lxh_growup_api.api_newAccountTask6(5,1))
-    ws.send(lxh_growup_api.api_newAccountTask6(5,1))
-    ws.send(lxh_growup_api.api_newAccountTask6(6,1))
-    #购买商店物品两次
-    ws.send(lxh_growup_api.api_get_shop_items())
-    time.sleep(5)
-    if item_number[0]!=0 :
-        ws.send(lxh_growup_api.api_buy_shop_items(item_number[0]))
-        ws.send(lxh_growup_api.api_buy_shop_items(item_number[1]))
-    #装备
-    if equipId != 0:
-        #装备强化
-        ws.send(lxh_growup_api.api_dailyTask9(equipId))
-        #装备熔炼
-        ws.send(lxh_growup_api.api_dailyTask8(equipId))
-    #喂榨菜丹
-    ws.send(lxh_growup_api.api_dailyTask7())
-    ws.send(lxh_growup_api.api_dailyTask7())
-    ws.send(lxh_growup_api.api_dailyTask7())
-    if isgetExp:
-        ws.send(lxh_growup_api.api_get_dailytask_reward(8))
-        ws.send(lxh_growup_api.api_get_dailytask_reward(7))
-        ws.send(lxh_growup_api.api_get_dailytask_reward(20)) 
-        ws.send(lxh_growup_api.api_get_dailytask_reward(5))
-        ws.send(lxh_growup_api.api_get_dailytask_reward(9))
-        ws.send(lxh_growup_api.api_get_dailytask_reward(10))
-        ws.send(lxh_growup_api.api_get_dailytask_reward(13))
-        ws.send(lxh_growup_api.api_newAccountTask7(20))
-        ws.send(lxh_growup_api.api_newAccountTask7(50))
+    '''
+    
 def do_something(ws):
     global email_list
     print("Do_Something")
@@ -484,10 +434,9 @@ def dailyTask():
             login()
             checklogin()
             if(level>level_limit):
-                do_dailyTask(False)
-                print("账号:"+str(int(var_accountNumber.get())-1)+'超出等级限制,不领取每日任务经验奖励')
+                print("账号:"+str(int(var_accountNumber.get())-1)+'超出等级限制,不进行每日任务')
             else:
-                do_dailyTask(True)
+                do_dailyTask()
                 print("账号:"+str(int(var_accountNumber.get())-1)+'完成每日任务')
             time.sleep(2)
             logout()
@@ -507,10 +456,40 @@ def dailyTask_once():
             login()
             checklogin()
             if(level>level_limit):
-                do_dailyTask_once(False)
-                print("账号:"+str(int(var_accountNumber.get())-1)+'超出等级限制,不领取一次性每日任务经验奖励')
+                print("账号:"+str(int(var_accountNumber.get())-1)+'超出等级限制,不进行一次性每日任务')
             else:
-                do_dailyTask_once(True)
+                ws.send(lxh_growup_api.api_newAccountTask5())  
+                ws.send(lxh_growup_api.api_dailyTask12())
+                ws.send(lxh_growup_api.api_dailyTask14())
+                #买体力
+                ws.send(lxh_growup_api.api_newAccountTask9())  
+                ws.send(lxh_growup_api.api_newAccountTask9()) 
+                ws.send(lxh_growup_api.api_newAccountTask9()) 
+                #投资会馆等级
+                ws.send(lxh_growup_api.api_newAccountTask6(2))
+                ws.send(lxh_growup_api.api_newAccountTask6(2))
+                ws.send(lxh_growup_api.api_newAccountTask6(2))
+                ws.send(lxh_growup_api.api_get_dailytask_reward(20)) 
+                #购买商店物品两次
+                ws.send(lxh_growup_api.api_get_shop_items())
+                time.sleep(5)
+                if item_number[0]!=0 :
+                    ws.send(lxh_growup_api.api_buy_shop_items(item_number[0]))
+                    ws.send(lxh_growup_api.api_buy_shop_items(item_number[1]))
+                    ws.send(lxh_growup_api.api_get_dailytask_reward(5))
+                #装备
+                if equipId != 0:
+                    #装备强化
+                    ws.send(lxh_growup_api.api_dailyTask9(equipId))
+                    ws.send(lxh_growup_api.api_get_dailytask_reward(9))
+                    #装备熔炼
+                    ws.send(lxh_growup_api.api_dailyTask8(equipId))
+                    ws.send(lxh_growup_api.api_get_dailytask_reward(10))
+                #喂榨菜丹
+                ws.send(lxh_growup_api.api_dailyTask7())
+                ws.send(lxh_growup_api.api_dailyTask7())
+                ws.send(lxh_growup_api.api_dailyTask7())
+                ws.send(lxh_growup_api.api_get_dailytask_reward(13))
                 print("账号:"+str(int(var_accountNumber.get())-1)+'完成一次性每日任务')
             time.sleep(5)
             logout()
@@ -540,19 +519,48 @@ def onekey():
     def dailyTask():
         global ws,level,level_limit
         if(level>level_limit):
-            do_dailyTask(False)
-            print("账号:"+str(int(var_accountNumber.get())-1)+'超出等级限制,不领取每日任务经验奖励')
+            print("账号:"+str(int(var_accountNumber.get())-1)+'超出等级限制,不进行每日任务')
         else:
-            do_dailyTask(True)
+            do_dailyTask()
             print("账号:"+str(int(var_accountNumber.get())-1)+'完成每日任务')
         time.sleep(1)
     def dailyTask_once():
         global ws,item_number,equipId
         if(level>level_limit):
-            do_dailyTask_once(False)
-            print("账号:"+str(int(var_accountNumber.get())-1)+'超出等级限制,不领取一次性每日任务经验奖励')
+            print("账号:"+str(int(var_accountNumber.get())-1)+'超出等级限制,不进行一次性每日任务')
         else:
-            do_dailyTask_once(True)
+            ws.send(lxh_growup_api.api_newAccountTask5())  
+            ws.send(lxh_growup_api.api_dailyTask12())
+            ws.send(lxh_growup_api.api_dailyTask14())
+            #买体力
+            ws.send(lxh_growup_api.api_newAccountTask9())  
+            ws.send(lxh_growup_api.api_newAccountTask9()) 
+            ws.send(lxh_growup_api.api_newAccountTask9()) 
+            #投资会馆等级
+            ws.send(lxh_growup_api.api_newAccountTask6(2))
+            ws.send(lxh_growup_api.api_newAccountTask6(2))
+            ws.send(lxh_growup_api.api_newAccountTask6(2))
+            ws.send(lxh_growup_api.api_get_dailytask_reward(20)) 
+            #购买商店物品两次
+            ws.send(lxh_growup_api.api_get_shop_items())
+            time.sleep(2)
+            if item_number[0]!=0 :
+                ws.send(lxh_growup_api.api_buy_shop_items(item_number[0]))
+                ws.send(lxh_growup_api.api_buy_shop_items(item_number[1]))
+                ws.send(lxh_growup_api.api_get_dailytask_reward(5))
+            #装备
+            if equipId != 0:
+                #装备强化
+                ws.send(lxh_growup_api.api_dailyTask9(equipId))
+                ws.send(lxh_growup_api.api_get_dailytask_reward(9))
+                #装备熔炼
+                ws.send(lxh_growup_api.api_dailyTask8(equipId))
+                ws.send(lxh_growup_api.api_get_dailytask_reward(10))
+            #喂榨菜丹
+            ws.send(lxh_growup_api.api_dailyTask7())
+            ws.send(lxh_growup_api.api_dailyTask7())
+            ws.send(lxh_growup_api.api_dailyTask7())
+            ws.send(lxh_growup_api.api_get_dailytask_reward(13))
             print("账号:"+str(int(var_accountNumber.get())-1)+'完成一次性每日任务')
         time.sleep(1)
             
@@ -561,11 +569,11 @@ def onekey():
         count_finish = 0
         count_isBoss = 0
         count_noTili = 0
+        equipId = 0
+        item_number[0] = 0
         autoFromNumber = int(var_autoFromNumber.get() ) 
         autoToNumber = int(var_autoToNumber.get() )
         for i in range(autoFromNumber,autoToNumber):
-            equipId = 0
-            item_number[0] = 0
             isBoss = 0
             var_accountNumber.set(i)
             login()
@@ -599,9 +607,9 @@ def oldaccount_dailytask():
     ws.send(lxh_growup_api.api_touchFriend(9494242,1)) 
     ws.send(lxh_growup_api.api_get_dailytask_reward(12)) 
     ws.send(lxh_growup_api.api_newAccountTask5())
-    ws.send(lxh_growup_api.api_newAccountTask6(1,1))
-    ws.send(lxh_growup_api.api_newAccountTask6(1,1))
-    ws.send(lxh_growup_api.api_newAccountTask6(1,1))
+    ws.send(lxh_growup_api.api_newAccountTask6(1))
+    ws.send(lxh_growup_api.api_newAccountTask6(1))
+    ws.send(lxh_growup_api.api_newAccountTask6(1))
     ws.send(lxh_growup_api.api_get_dailytask_reward(20)) 
     for i in range(7,0,-1):
         ws.send(lxh_growup_api.api_dailyTask15(i))
@@ -683,7 +691,7 @@ if __name__ == "__main__":
     frm_login.pack(side=TOP)
     var_accountNumber = StringVar()
     entry_accountNumber = Entry(frm_login,textvariable = var_accountNumber)   
-    var_accountNumber.set("2")
+    var_accountNumber.set(str(len(account)))
     entry_accountNumber.pack(side=LEFT) 
     btn_login = Button(frm_login, text='登录', command=login)  
     btn_login.pack(side=LEFT)
@@ -700,7 +708,7 @@ if __name__ == "__main__":
     killcount = Entry(frm_login,textvariable = var_killcount)   
     var_killcount.set("1")
     killcount.pack(side=LEFT) 
-    btn_kill = Button(frm_login, text='扫荡', command=kill)  
+    btn_kill = Button(frm_login, text='投资', command=do_dailyTask)  
     btn_kill.pack(side=LEFT)
     btn_bugTili = Button(frm_login, text='购买体力', command=bugTili)  
     btn_bugTili.pack(side=LEFT)

@@ -2,7 +2,7 @@ import urllib.request
 import http.cookiejar
 import json
 import time
-
+import hashlib
 
 #加入对cookies的支持
 cookieJarInMemory = http.cookiejar.CookieJar();
@@ -11,9 +11,8 @@ urllib.request.install_opener(opener);
 
 def getToken(username,device_uuid,sign,isdebug = 0):
     
-    version_str = "4.0.23(4.11316.11984)"
-    version = '\"4.0.23(4.11316.11984)\"'
-    
+    version_str = "4.0.25(4.11316.12262)"
+    version = '\"4.0.25(4.11316.12262)\"'
     url_login='http://lxh-global.bjmanya.com:9009/user/login'
     #创建Request对象
     request = urllib.request.Request(url_login)
@@ -201,7 +200,6 @@ def report(username,device_uuid,sign,server_num,isdebug = 0):
     context = response.read().decode('utf-8')
     #输出网页内容
     print(context)
-    
 
 def ttt():
     #获取账号信息-40005
@@ -233,3 +231,62 @@ def ttt():
     context = response.read().decode('utf-8')
     #输出网页内容
     print(context)
+    
+def getLoginSign(account):
+    #appsecret=f01fbef4ed9b1061cb4aaebd60f54657
+    m2 = hashlib.md5()   
+    str = 'account='+account+'#appid=100000#check_code=#device=iphone#device_uuid=1965FBA4-13AA-49C7-BC00-B6356627C74B#os=IOS#os_vers=10.3.3#password=000000#source=#f01fbef4ed9b1061cb4aaebd60f54657'
+    m2.update(str.encode(encoding='utf_8', errors='strict'))   
+    return  m2.hexdigest()
+
+
+def getRegisterSign(account):
+    #appsecret=f01fbef4ed9b1061cb4aaebd60f54657
+    m2 = hashlib.md5()   
+    str = 'account='+account+'#account_type=1#appid=100000#check_code=#device=iphone#device_uuid=1965FBA4-13AA-49C7-BC00-B6356627C74B#os=IOS#os_vers=10.3.3#password=000000#source=#f01fbef4ed9b1061cb4aaebd60f54657'
+    m2.update(str.encode(encoding='utf_8', errors='strict'))   
+    return  m2.hexdigest()
+
+
+def RegisterAccount(account):
+    #注册账户
+    url='http://lxh-global.bjmanya.com:9009/user/register'
+    #创建Request对象
+    request = urllib.request.Request(url)
+    #添加数据
+    #添加http header
+    request.add_header('Host', 'lxh-global.bjmanya.com:9009')
+    request.add_header('Accept', '*/*')
+    request.add_header('Content-Type',' application/x-www-form-urlencoded')
+    #POST_Data
+    post_data = {
+        'account':account,
+        'account_type':'1',
+        'appid':'100000',
+        'check_code':'',
+        'device':'iphone',
+        'device_uuid':'1965FBA4-13AA-49C7-BC00-B6356627C74B',
+        'os':'IOS',
+        'os_vers':'10.3.3',
+        'password':'000000',
+        'source':'',
+        'sign': getRegisterSign(account)
+        }
+    post_data_code= urllib.parse.urlencode(post_data).encode(encoding='UTF8')
+    #发送请求
+    response = urllib.request.urlopen(request,data=post_data_code,timeout=60)
+    #保存网页内容
+    context = response.read().decode('unicode_escape')
+    #输出网页内容
+    #print(context)
+    context_json = json.loads(context)
+    if context_json['status']==0 :
+        print("新账号"+account+"注册成功")
+        return True
+    else:
+        print("注册失败,原因为:"+context_json['message'])
+        return False
+
+if __name__ == "__main__":
+    
+    RegisterAccount("tttttt333")

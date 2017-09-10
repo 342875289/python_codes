@@ -249,8 +249,13 @@ def api_get_pets_by_zhuawawa_2(Index):
     print("抓娃娃第二步-抓")
     return requset_str
 #
-#新账号任务1-猫村理财
-def api_newAccountTask1():
+#新账号任务11-猫村理财
+def api_newAccountTask11():
+    requset_str = '{"Header":{"MsgID":17129},"Msg":{}}'
+    print("猫村理财")
+    return requset_str
+#新账号任务12-猫村理财
+def api_newAccountTask12():
     requset_str = '{"Header":{"MsgID":17127},"Msg":{}}'
     print("猫村理财")
     return requset_str
@@ -275,7 +280,7 @@ def api_newAccountTask5():
     print("每日签到")
     return requset_str
 
-#新账号任务6-投资会馆等级：1-会馆等级，2-会馆容量，5-鱼干总数,6-个人鱼干数,Type-1:金币投资,-2:钻石投资
+#新账号任务6-投资会馆等级：1-会馆等级，2-会馆容量，5-鱼干总数,6-个人鱼干数
 def api_newAccountTask6(LegionTechId,Type):
     requset_str = '{"Header":{"MsgID":15525},"Msg":{"LegionTechId":'+str(LegionTechId)+',"Type":'+str(Type)+'}}'
     print("投资会馆等级")
