@@ -209,13 +209,21 @@ def api_touchFriend(friend_id,ActionType):
     requset_str = '{"Header":{"MsgID":16213},"Msg":{"PlayerId":'+str(friend_id)+',"ActionType":'+str(ActionType)+'}}'
     print("进行好友互动")
     return requset_str
-
+#创建公会
+def api_creatLegion(LegionName):
+    requset_str = '{"Header":{"MsgID":15505},"Msg":{"IconId":1011,"LegionName":'+str(LegionName)+'}}'
+    print("创建公会:"+str(LegionName))
+    return requset_str
 #加入公会
 def api_addLegion(LegionId):
     requset_str = '{"Header":{"MsgID":15507},"Msg":{"LegionId":'+str(LegionId)+'}}'
     print("申请加入公会")
     return requset_str
-
+#退出公会
+def api_quitLegion():
+    requset_str = '{"Header":{"MsgID":15513},"Msg":{}}'
+    print("退出公会")
+    return requset_str
 #扫荡
 def api_kill(character,boss,times):
     requset_str = '{"Header":{"MsgID":14005},"Msg":{"LevelId":'+str(character)+'000'+str(boss*3)+',"LevelType":1,"Count":'+str(times)+',"ForceId":'+str(character)+'}}'
@@ -230,12 +238,16 @@ def api_strengthen_soul(thing,level):
     print("灵质熔炼")
     return requset_str
 
+#打开背包中的箱子
+def api_open_box_inBag(Count,TemplateId):
+    requset_str = '{"Header":{"MsgID":12605},"Msg":{"Count":'+str(Count)+',"TemplateId":'+str(TemplateId)+'}}'
+    print("打开箱子")
+    return requset_str
 
-
-#领取等级奖励-榨菜丹
+#领取等级奖励-榨菜丹 300006 300007 - 300015
 def api_get_level_reward(TaskId):
-    requset_str = '{"Header":{"MsgID":13603},"Msg":{"TaskId":}}'
-    print("领取等级奖励-榨菜丹")
+    requset_str = '{"Header":{"MsgID":13603},"Msg":{"TaskId":'+str(300000+TaskId)+'}}'
+    #print("领取等级奖励-榨菜丹")
     return requset_str
 
 #抓娃娃第一步-投币
@@ -280,7 +292,7 @@ def api_newAccountTask5():
     print("每日签到")
     return requset_str
 
-#新账号任务6-投资会馆等级：1-会馆等级，2-会馆容量，5-鱼干总数,6-个人鱼干数
+#新账号任务6-投资会馆等级：1-会馆等级，2-会馆容量,3-会馆BOSS,5-鱼干总数,6-个人鱼干数
 def api_newAccountTask6(LegionTechId,Type):
     requset_str = '{"Header":{"MsgID":15525},"Msg":{"LegionTechId":'+str(LegionTechId)+',"Type":'+str(Type)+'}}'
     print("投资会馆等级")

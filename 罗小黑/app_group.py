@@ -4,6 +4,7 @@ import _thread
 import time
 import json
 
+#15到17
 
 import lxhWebsocketApi
 import lxh_growup_api
@@ -15,11 +16,25 @@ account = [ {'account_name':"mingg1",'device_id':"1965FBA4-13AA-49C7-BC00-B63566
             {'account_name':"mingg5",'device_id':"1965FBA4-13AA-49C7-BC00-B6356627C74B",'sign':"d00fc7211f308d7b1e2b391c30543614"},
             {'account_name':"mingg6",'device_id':"1965FBA4-13AA-49C7-BC00-B6356627C74B",'sign':"625d291b8055cc07d9ce3d27de505f0a"},
             {'account_name':"mingg7",'device_id':"1965FBA4-13AA-49C7-BC00-B6356627C74B",'sign':"8f2e144d2962539a2ab1491596c0a22c"},
-            {'account_name':"mingg8",'device_id':"1965FBA4-13AA-49C7-BC00-B6356627C74B",'sign':"bb308171c573e531e1b91820fe05ce1e"},
-            {'account_name':"mingg9",'device_id':"1965FBA4-13AA-49C7-BC00-B6356627C74B",'sign':"bb308171c573e531e1b91820fe05ce1e"},
-            {'account_name':"mingg10",'device_id':"1965FBA4-13AA-49C7-BC00-B6356627C74B",'sign':"bb308171c573e531e1b91820fe05ce1e"},
-            {'account_name':"mingg11",'device_id':"1965FBA4-13AA-49C7-BC00-B6356627C74B",'sign':"bb308171c573e531e1b91820fe05ce1e"},
-            ]
+            {'account_name':"mingg8",'device_id':"1965FBA4-13AA-49C7-BC00-B6356627C74B",'sign':"f05ec7d998c181a61449c0f5f674385e"},
+            {'account_name':"mingg10",'device_id':"1965FBA4-13AA-49C7-BC00-B6356627C74B",'sign':"ace4ec28c6177f4a83d67732bb217b57"},
+            {'account_name':"mingg10",'device_id':"1965FBA4-13AA-49C7-BC00-B6356627C74B",'sign':"ace4ec28c6177f4a83d67732bb217b57"},
+            {'account_name':"mingg11",'device_id':"1965FBA4-13AA-49C7-BC00-B6356627C74B",'sign':"292521ba0241313dadaa79ee24d1330f"},
+            {'device_id': '1965FBA4-13AA-49C7-BC00-B6356627C74B', 'sign': 'a90e37e2f20e8d73db87c82ed313906d', 'account_name': 'mingg12'},
+            {'device_id': '1965FBA4-13AA-49C7-BC00-B6356627C74B', 'sign': 'b2fd9a56fdf63e1c16eb51bbf6f26051', 'account_name': 'mingg13'},
+            {'device_id': '1965FBA4-13AA-49C7-BC00-B6356627C74B', 'sign': '6e73f76ccc2ef603eefc84ffd1e4011c', 'account_name': 'mingg14'},
+            {'device_id': '1965FBA4-13AA-49C7-BC00-B6356627C74B', 'sign': '7685003585c1b6706af0f2ada6f06edf', 'account_name': 'mingg15'},
+            {'device_id': '1965FBA4-13AA-49C7-BC00-B6356627C74B', 'sign': '905b559602d9feadb103268c095b6e38', 'account_name': 'mingg16'},
+            {'device_id': '1965FBA4-13AA-49C7-BC00-B6356627C74B', 'sign': '9821016cb59b273a8f33a0d56aab9995', 'account_name': 'mingg17'},
+            {'device_id': '1965FBA4-13AA-49C7-BC00-B6356627C74B', 'sign': 'c8b308a1cdaac4f30b1922987ff9598a', 'account_name': 'mingg18'},
+            {'device_id': '1965FBA4-13AA-49C7-BC00-B6356627C74B', 'sign': '5bdc4cb134da212511348c24fbc03d5c', 'account_name': 'mingg19'},
+            {'device_id': '1965FBA4-13AA-49C7-BC00-B6356627C74B', 'sign': '7ba8703ecf2fe7b2ab3b5503652743e6', 'account_name': 'mingg20'},
+            {'device_id': '1965FBA4-13AA-49C7-BC00-B6356627C74B', 'sign': '4462c60e2cda6b89d06cffe9ad39c9e8', 'account_name': 'mingg21'},
+            {'device_id': '1965FBA4-13AA-49C7-BC00-B6356627C74B', 'sign': 'd08f94853189928fe9ed71871362417f', 'account_name': 'mingg22'},
+            {'device_id': '1965FBA4-13AA-49C7-BC00-B6356627C74B', 'sign': '585d7e326abf93cf2f2ea8065409b914', 'account_name': 'mingg23'},
+            {'device_id': '1965FBA4-13AA-49C7-BC00-B6356627C74B', 'sign': '1b00ab88fcf4ba9fb1bce4f9f3b9ebc7', 'account_name': 'mingg24'},
+
+]
 
 
 
@@ -186,7 +201,7 @@ def run(*args):
     
 def start_game(ws):
     do_something(ws)
-    
+
 def step_one():
     global account_num,ws
     print("开始执行-第1步")
@@ -676,7 +691,23 @@ def strengthen_soul():
         ws.send(lxh_growup_api.api_strengthen_soul(5020141, 2)) 
         ws.send(lxh_growup_api.api_strengthen_soul(5020151, 2))        
     print('灵质熔炼完成')   
-         
+
+
+def quitgroup():
+    def test():
+        global ws,level,level_limit
+        autoFromNumber = int(var_autoFromNumber.get() ) 
+        autoToNumber = int(var_autoToNumber.get() )
+        for i in range(autoFromNumber,autoToNumber):
+            var_accountNumber.set(i)
+            login()
+            checklogin()
+            ws.send(lxh_growup_api.api_quitLegion()) 
+            time.sleep(2)
+            logout()
+    _thread.start_new_thread(test, ())
+    
+    
 if __name__ == "__main__":
     #窗体参数
     win = Tk()#定义一个窗体  
@@ -746,7 +777,7 @@ if __name__ == "__main__":
     btn_dailyTask_once.pack(side=RIGHT)
     btn_dailyTask = Button(frm_autoKill, text='每日任务', command=dailyTask)  
     btn_dailyTask.pack(side=RIGHT)
-    btn_autoKill = Button(frm_autoKill, text='自动扫荡', command=AutoKill)  
+    btn_autoKill = Button(frm_autoKill, text='自动退会', command=quitgroup)  
     btn_autoKill.pack(side=RIGHT)
     
     label_autoKill = Label(frm_autoKill)  
@@ -757,19 +788,6 @@ if __name__ == "__main__":
     frm_oldaccount.pack(side=TOP)
     label_oldaccount = Label(frm_oldaccount)  
     label_oldaccount['text'] = '大号操作区:'  
-    label_oldaccount.pack(side=LEFT) 
-    btn_oldaccount_login = Button(frm_oldaccount, text='登录大号', command=logout_in_oldaccount)  
-    btn_oldaccount_login.pack(side=LEFT)
-    btn_oldaccount_logout = Button(frm_oldaccount, text='注销', command=logout)  
-    btn_oldaccount_logout.pack(side=LEFT)
-    btn_oldaccount_dailytask = Button(frm_oldaccount, text='每日任务', command=oldaccount_dailytask)  
-    btn_oldaccount_dailytask.pack(side=LEFT)
-    btn_oldaccount_dailytask_once = Button(frm_oldaccount, text='只能做一次的每日任务', command=oldaccount_dailytask_once)  
-    btn_oldaccount_dailytask_once.pack(side=LEFT)
-    btn_oldaccount_soul = Button(frm_oldaccount, text='灵质熔炼', command=strengthen_soul)  
-    btn_oldaccount_soul.pack(side=LEFT) 
-    btn_oldaccount_zhua = Button(frm_oldaccount, text='抓娃娃', command=get_pets_by_zhuawawa)  
-    btn_oldaccount_zhua.pack(side=LEFT) 
     #练小号frame
     frm_newaccount = Frame(win)
     frm_newaccount.pack(side=TOP)

@@ -370,16 +370,14 @@ def do_something(ws):
     ws.send(lxh_growup_api.api_giveVitality())
     #领取鱼干
     ws.send(lxh_growup_api.api_get_fish())  
-    
     #收取所有邮件奖励
     lxh_growup_api.api_get_all_email_reward(ws,email_list)
-    
-    '''
-    #登录有礼
-    for i in range(10,14):
-        ws.send(lxh_growup_api.api_newAccountTask3(i+1))
+    #登录有礼-领取榨菜丹
+    for i in range(1,20):
+        #ws.send(lxh_growup_api.api_newAccountTask3(i+1))
+        print("领取等级奖励-榨菜丹")
         ws.send(lxh_growup_api.api_get_level_reward(i+1))
-    '''
+    
     
 def login():
     global account_name,device_id,sign,report_sign,ws,level

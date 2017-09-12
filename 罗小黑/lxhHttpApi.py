@@ -281,12 +281,23 @@ def RegisterAccount(account):
     #print(context)
     context_json = json.loads(context)
     if context_json['status']==0 :
-        print("新账号"+account+"注册成功")
+        #print("新账号"+account+"注册成功")
         return True
     else:
-        print("注册失败,原因为:"+context_json['message'])
+        #print("注册失败,原因为:"+context_json['message'])
         return False
 
 if __name__ == "__main__":
-    
-    RegisterAccount("tttttt333")
+    count_success = 0
+    count_failed = 0
+    for i in range( 1 , 2   +1):
+        account = 'minggttttt'+str(i)
+        if(RegisterAccount(account)) :
+            context_json = json.loads('{"account_name":"mingg1","device_id":"1965FBA4-13AA-49C7-BC00-B6356627C74B","sign":"3ec7cce0b2274e4f3311aa00ccaf0ecf"}')
+            context_json['account_name'] = account
+            context_json['sign'] = getLoginSign(account)
+            print(context_json)
+            count_success = count_success + 1
+        else:
+            count_failed = count_failed + 1 
+    print("注册完成,"+"成功:"+str(count_success)+"个,失败:"+str(count_failed))
