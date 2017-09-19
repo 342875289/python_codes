@@ -19,6 +19,13 @@ account = [ {'account_name':"mingg1",'device_id':"1965FBA4-13AA-49C7-BC00-B63566
             {'account_name':"mingg9",'device_id':"1965FBA4-13AA-49C7-BC00-B6356627C74B",'sign':"bb308171c573e531e1b91820fe05ce1e"},
             {'account_name':"mingg10",'device_id':"1965FBA4-13AA-49C7-BC00-B6356627C74B",'sign':"bb308171c573e531e1b91820fe05ce1e"},
             {'account_name':"mingg11",'device_id':"1965FBA4-13AA-49C7-BC00-B6356627C74B",'sign':"bb308171c573e531e1b91820fe05ce1e"},
+            {'account_name':"mingg12",'device_id':"1965FBA4-13AA-49C7-BC00-B6356627C74B",'sign':"bb308171c573e531e1b91820fe05ce1e"},
+            {'account_name':"mingg13",'device_id':"1965FBA4-13AA-49C7-BC00-B6356627C74B",'sign':"bb308171c573e531e1b91820fe05ce1e"},
+            {'account_name':"mingg14",'device_id':"1965FBA4-13AA-49C7-BC00-B6356627C74B",'sign':"bb308171c573e531e1b91820fe05ce1e"},
+            {'account_name':"mingg15",'device_id':"1965FBA4-13AA-49C7-BC00-B6356627C74B",'sign':"bb308171c573e531e1b91820fe05ce1e"},
+            {'account_name':"mingg16",'device_id':"1965FBA4-13AA-49C7-BC00-B6356627C74B",'sign':"bb308171c573e531e1b91820fe05ce1e"},
+            {'account_name':"mingg17",'device_id':"1965FBA4-13AA-49C7-BC00-B6356627C74B",'sign':"bb308171c573e531e1b91820fe05ce1e"},
+            {'account_name':"mingg18",'device_id':"1965FBA4-13AA-49C7-BC00-B6356627C74B",'sign':"c8b308a1cdaac4f30b1922987ff9598a"},
             ]
 
 
@@ -244,11 +251,11 @@ def step_two():
     #添加大号为好友
     #ws.send(lxh_growup_api.api_addfriend(9401559))
     #加入公会
-    ws.send(lxh_growup_api.api_addLegion(50197))
+    #ws.send(lxh_growup_api.api_addLegion(50197))
     #投资会馆
-    ws.send(lxh_growup_api.api_newAccountTask6(1,2))
-    ws.send(lxh_growup_api.api_newAccountTask6(1,2))
-    ws.send(lxh_growup_api.api_newAccountTask6(1,2))
+    #ws.send(lxh_growup_api.api_newAccountTask6(1,2))
+    #ws.send(lxh_growup_api.api_newAccountTask6(1,2))
+    #ws.send(lxh_growup_api.api_newAccountTask6(1,2))
     time.sleep(1)
     #新账号任务系列
     ws.send(lxh_growup_api.api_newAccountTask11())

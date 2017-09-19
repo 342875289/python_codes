@@ -8,4 +8,4 @@ def getLoginSign(account):
     return  m2.hexdigest()
 
 if __name__ == "__main__":
-    print(getLoginSign("mingg7"))
+    print(getLoginSign("mingg18"))

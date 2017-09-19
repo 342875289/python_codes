@@ -46,7 +46,7 @@ account_num = 0
 server_num = 10#注意！！！变更服务器还需要修改websocketIP
 #
 level_oldaccount = 59
-level_limit = 43
+level_limit = 45
 #以下参数不需要修改
 #读取账号登录需要的信息
 account_name = ''
