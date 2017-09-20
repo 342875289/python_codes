@@ -643,7 +643,7 @@ def oldaccount_dailytask_once():
     #后山探险
         ws.send(lxh_growup_api.api_dailyTask21())
         ws.send(lxh_growup_api.api_dailyTask22())
-    for i in [3,10,13,20,23,30,33,40,43]:
+    for i in [3,10,13,20,23,30,33,40,43,50,53]:
         ws.send(lxh_growup_api.api_dailyTask23(3,i))
         ws.send(lxh_growup_api.api_dailyTask24())
     ws.send(lxh_growup_api.api_get_dailytask_reward(16)) 
@@ -654,6 +654,8 @@ def oldaccount_dailytask_once():
     ws.send(lxh_growup_api.api_buy_shop_items(item_number[0]))
     ws.send(lxh_growup_api.api_buy_shop_items(item_number[1]))
     ws.send(lxh_growup_api.api_get_dailytask_reward(5))
+    #黑粉催更
+    ws.send(lxh_growup_api.api_getitem())
     #永久月卡
     ws.send(lxh_growup_api.api_dailyTask25())
     #领取活跃度奖励
