@@ -616,7 +616,9 @@ def oldaccount_dailytask():
     ws.send(lxh_growup_api.api_dailyTask19(1034,7))
     #收取所有邮件奖励
     lxh_growup_api.api_get_all_email_reward(ws,email_list)
-
+    #领取活跃度奖励
+    ws.send(lxh_growup_api.api_newAccountTask7(20))
+    ws.send(lxh_growup_api.api_newAccountTask7(50))
     print("大号完成每日任务")
     
 def oldaccount_dailytask_once():
@@ -652,6 +654,11 @@ def oldaccount_dailytask_once():
     ws.send(lxh_growup_api.api_buy_shop_items(item_number[0]))
     ws.send(lxh_growup_api.api_buy_shop_items(item_number[1]))
     ws.send(lxh_growup_api.api_get_dailytask_reward(5))
+    #永久月卡
+    ws.send(lxh_growup_api.api_dailyTask25())
+    #领取活跃度奖励
+    ws.send(lxh_growup_api.api_newAccountTask7(20))
+    ws.send(lxh_growup_api.api_newAccountTask7(50))
     print("大号完成每日任务")
     
     

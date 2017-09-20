@@ -456,3 +456,8 @@ def api_dailyTask24():
     requset_str = '{"Header":{"MsgID":14627},"Msg":{}}'
     print("后山探险-查看奖励2")
     return requset_str
+#每日任务-永久月卡
+def api_dailyTask25():
+    requset_str = '{"Header":{"MsgID":17119},"Msg":{"GoodsType":4}}'
+    print("永久月卡")
+    return requset_str
