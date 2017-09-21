@@ -38,9 +38,23 @@ response = urllib.request.urlopen(request,timeout=60)
 #保存网页内容
 context = response.read().decode('utf-8')
 #输出网页内容
-print(context)
+#print(context)
 
 soup = BeautifulSoup(context,'html.parser')
 print('----------')
-print(soup('tr'))
+tags = soup.find_all('tr',attrs={"target": "xid"})
+print(tags[0].get_text())
+tds = tags[0].find_all('td')
+print(tds[1].get_text())
+print(tds[2].get_text())
+print(tds[3].get_text())
+print(tds[4].get_text())
+for td in tds:
+    print(td.get_text())
 
+'''
+print(len(tags))
+for tag in tags:
+    print(tag)
+    print(tag.a)
+'''
