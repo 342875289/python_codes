@@ -1,166 +1,46 @@
 import urllib.request
 import http.cookiejar
 import json
+import time
+
+from bs4 import BeautifulSoup
+
+page_number = 1
+page_items_limit = 50
 
 #加入对cookies的支持
 cookieJarInMemory = http.cookiejar.CookieJar();
 opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cookieJarInMemory));
 urllib.request.install_opener(opener);
 
-url_login='http://lxh-global.bjmanya.com:9009/user/login'
-#创建Request对象
-request = urllib.request.Request(url_login)
-#添加数据
-#添加http header
-request.add_header('Host', ' lxh-global.bjmanya.com:9009')
-request.add_header('Accept', '*/*')
-request.add_header('Content-Type',' application/x-www-form-urlencoded')
 
-
-#POST_Data
-post_data = {
-'account': 'qq342875289',
-'appid': '100000',
-'check_code': '',
-'device': 'iphone',
-'device_uuid': '1965FBA4-13AA-49C7-BC00-B6356627C74B',
-'os': 'IOS',
-'os_vers': '10.3.3',
-'password': '000000',
-'source': '',
-'sign': 'cd8929990165f5644f1c66c969efd300'
-}
-
-post_data_code= urllib.parse.urlencode(post_data).encode(encoding='UTF8')
-#发送请求
-response = urllib.request.urlopen(request,data=post_data_code,timeout=60)
-#保存网页内容
-context = response.read().decode('unicode_escape')
-#输出网页内容
-print(context)
-context_json = json.loads(context)
-print("登录状态:"+context_json['message'])
-
-#输出数据--userid,token,expire
-userdata = context_json['data']
-
-
-
-
-#获取ticket
-url='http://lxh-global.bjmanya.com:9002/index.php'+'?'+'ChannelId=70001&Token='+str(userdata['userid'])+';'+str(userdata['token'])
+param ={'x':1,
+        'TeachinAll_sort':'xid.desc',
+        'target':'navTab',
+        '_':int(time.time()*1000),
+        'page':page_number,
+        'limit':page_items_limit,}
+param_str = urllib.parse.urlencode(param)
+url='http://jiangnan.91job.gov.cn/admin/teachin/manage2/_/1505899408778/domain/jiangnan/TeachinAll_sort/xid.desc/target/navTab/page/1/limit/50?_=1505899495014'
+url='http://jiangnan.91job.gov.cn/admin/teachin/manage2?x=1&TeachinAll_sort=xid.desc&target=navTab&_=1505963517332&page=2&limit=50'
+url='http://jiangnan.91job.gov.cn/admin/teachin/manage2?'+param_str
 #创建Request对象
 request = urllib.request.Request(url)
 #添加数据
 #添加http header
-request.add_header('Host', ' lxh-global.bjmanya.com:9002')
+request.add_header('Host', 'jiangnan.91job.gov.cn')
 request.add_header('Accept', '*/*')
 request.add_header('Content-Type',' application/x-www-form-urlencoded')
-
-
-#POST_Data
-post_data = {
-'appid': '100000',
-'check_code': '',
-'device': 'iphone',
-'device_uuid': '1965FBA4-13AA-49C7-BC00-B6356627C74B',
-'os': 'IOS',
-'os_vers': '10.3.3',
-'password': '000000',
-'source': '',
-'sign': 'cd8929990165f5644f1c66c969efd300'
-}
-
-post_data_code= urllib.parse.urlencode(post_data).encode(encoding='UTF8')
+request.add_header('Referer','http://jiangnan.91job.gov.cn/admin/default/index')
+request.add_header('Cookie','UM_distinctid=15e60471d3a2c3-02ebee99dd6057-4a6b124f-1fa400-15e60471d3b847; admin=149f70d8f9702cae55a9441ef58560c3cf50d31da%3A4%3A%7Bi%3A0%3Bs%3A4%3A%225997%22%3Bi%3A1%3Bs%3A6%3A%22jyzdzx%22%3Bi%3A2%3Bi%3A2592000%3Bi%3A3%3Ba%3A10%3A%7Bs%3A13%3A%22validpassword%22%3Bb%3A1%3Bs%3A10%3A%22superadmin%22%3Bs%3A1%3A%220%22%3Bs%3A8%3A%22realname%22%3Bs%3A13%3A%22%E5%B0%B1%E4%B8%9A%E5%B8%82%E5%9C%BA1%22%3Bs%3A7%3A%22belongs%22%3Bs%3A3%3A%22742%22%3Bs%3A5%3A%22value%22%3Ba%3A0%3A%7B%7Ds%3A6%3A%22perm_1%22%3Bs%3A1%3A%220%22%3Bs%3A5%3A%22phone%22%3Bs%3A11%3A%2218861821971%22%3Bs%3A10%3A%22department%22%3Bs%3A42%3A%22%E6%B1%9F%E5%8D%97%E5%A4%A7%E5%AD%A6%E5%B0%B1%E4%B8%9A%E5%88%9B%E4%B8%9A%E6%8C%87%E5%AF%BC%E6%9C%8D%E5%8A%A1%E4%B8%AD%E5%BF%83%22%3Bs%3A7%3A%22manager%22%3BN%3Bs%3A9%3A%22education%22%3Bs%3A2%3A%2211%22%3B%7D%7D; scan_teachin=a%3A1%3A%7Bi%3A136931%3Ba%3A3%3A%7Bs%3A3%3A%22xid%22%3Bs%3A6%3A%22136931%22%3Bs%3A12%3A%22company_name%22%3Bs%3A33%3A%22%E4%B8%8A%E6%B5%B7%E7%9B%AE%E8%BF%A9%E7%94%B5%E5%AD%90%E7%A7%91%E6%8A%80%E6%9C%89%E9%99%90...%22%3Bs%3A8%3A%22dateline%22%3Bi%3A1505899088%3B%7D%7D; CNZZDATA1259394577=48600896-1504850989-http%253A%252F%252Fjiangnan.91job.gov.cn%252F%7C1505894485; PHPSESSID2=gfchit8h4me505jusdcmtvbjm1')
 #发送请求
-response = urllib.request.urlopen(request,data=post_data_code,timeout=60)
-#保存网页内容
-context = response.read().decode('unicode_escape')
-#输出网页内容
-print(context)
-token = json.loads(context)['Msg']['Ticket']
-print('token:'+token)
-
-
-
-#获取通知，服务器列表-40001
-verson = '\"4.0.23(4.11316.11984)\"'
-url='http://lxh-global.bjmanya.com:9001/?data={"Header":{"MsgID":40001},"Msg":{"Platform":12,"Version":'+verson+',"Channel":70001,"AccountId":'+'"'+str(userdata['userid'])+'","Account":"'+userdata['bind_name']+'"}}'
-#创建Request对象
-request = urllib.request.Request(url)
-#添加数据
-#添加http header
-request.add_header('Host', 'lxh-global.bjmanya.com:9001')
-request.add_header('Accept', '*/*')
-request.add_header('Content-Type',' application/x-www-form-urlencoded')
-#POST_Data
-post_data = {}
-post_data_code= urllib.parse.urlencode(post_data).encode(encoding='UTF8')
-#发送请求
-response = urllib.request.urlopen(request,data=post_data_code,timeout=60)
+response = urllib.request.urlopen(request,timeout=60)
 #保存网页内容
 context = response.read().decode('utf-8')
 #输出网页内容
 print(context)
 
-
-#获取公告-40003
-url='http://lxh-global.bjmanya.com:9001/?data={"Header":{"MsgID":40003},"Msg":{"Platform":12,"ServerId":120010,"Channel":70001}}'
-#创建Request对象
-request = urllib.request.Request(url)
-#添加数据
-#添加http header
-request.add_header('Host', 'lxh-global.bjmanya.com:9001')
-request.add_header('Accept', '*/*')
-request.add_header('Content-Type',' application/x-www-form-urlencoded')
-#POST_Data
-post_data = {}
-post_data_code= urllib.parse.urlencode(post_data).encode(encoding='UTF8')
-#发送请求
-response = urllib.request.urlopen(request,data=post_data_code,timeout=60)
-#保存网页内容
-context = response.read().decode('utf-8')
-#输出网页内容
-print(context)
-
-
-#获取账号信息-40005
-url='http://lxh-global.bjmanya.com:9001/?data={"Header":{"MsgID":40005},"Msg":{"Platform":12,"AccountId":'+'"'+str(userdata['userid'])+'","Channel":70001}}'
-#创建Request对象
-request = urllib.request.Request(url)
-#添加数据
-#添加http header
-request.add_header('Host', 'lxh-global.bjmanya.com:9001')
-request.add_header('Accept', '*/*')
-request.add_header('Content-Type',' application/x-www-form-urlencoded')
-#POST_Data
-post_data = {}
-post_data_code= urllib.parse.urlencode(post_data).encode(encoding='UTF8')
-#发送请求
-response = urllib.request.urlopen(request,data=post_data_code,timeout=60)
-#保存网页内容
-context = response.read().decode('utf-8')
-#输出网页内容
-print(context)
-
-
-
-#未知-40009
-url='http://lxh-global.bjmanya.com:9001/?data={"Header":{"MsgID":40009},"Msg":{"Platform":12,"AccountId":'+'"'+str(userdata['userid'])+'","Channel":70001}}'
-#创建Request对象
-request = urllib.request.Request(url)
-#添加数据
-#添加http header
-request.add_header('Host', 'lxh-global.bjmanya.com:9001')
-request.add_header('Accept', '*/*')
-request.add_header('Content-Type',' application/x-www-form-urlencoded')
-#POST_Data
-post_data = {}
-post_data_code= urllib.parse.urlencode(post_data).encode(encoding='UTF8')
-#发送请求
-response = urllib.request.urlopen(request,data=post_data_code,timeout=60)
-#保存网页内容
-context = response.read().decode('utf-8')
-#输出网页内容
-print(context)
+soup = BeautifulSoup(context,'html.parser')
+print('----------')
+print(soup('tr'))
 
