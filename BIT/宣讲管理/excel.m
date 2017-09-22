@@ -32,7 +32,7 @@ function excel()
             date = TXT{i,5};
             T{j,1} =  date(1:10);
             % 预约时间
-            T{j,2} =  date(11:end);
+            T{j,2} =  date(12:end);
             % 公司名称
             T(j,3) =  TXT(i,1);
             % 宣讲地址
@@ -65,7 +65,7 @@ end
 
 function [output] = str_replace(input)
     if length(input) < 6
-        output = '';
+        output = input;
         return
     end
     output = input;

@@ -2,8 +2,9 @@
 # -*- coding: utf-8 -*-     
 from win32com.client import Dispatch    
 import win32com.client    
-
+import json
 import os
+from pickle import NONE
 class easyExcel:    
     """A utility to make it easier to get at Excel.    Remembering  
     to save the data is your problem, as is    error handling.  
@@ -62,11 +63,57 @@ class easyExcel:
 if __name__ == "__main__":    
     #PNFILE = r'c:/screenshot.bmp'  
     try:
-        filename_open = 'test.xlsx'
-        filename_save = 'test2.xlsx'
+        filename_open = 'template.xlsx'
+        filename_save = 'template2.xlsx'
+        row_ignore = 2
+        columns_ignore = 3
         xls = easyExcel(os.getcwd()+'\\'+filename_open)
         xls.setSheet('宣讲会教室借用')
-        #xls.setCell(2,'A',130)  
+        
+        schedule = {}
+        class_list = []
+        date_num  = xls.rows_conut/2 - 1
+        class_num = xls.columns_conut - 3
+        
+        
+        print('读取到:%d行,%d列'% (xls.rows_conut,xls.columns_conut))
+        print('折合:%d天,%d个教室'% (date_num,class_num))
+        for class_info in range(1+columns_ignore,xls.columns_conut+1):
+            class_list.append(xls.getCell(row_ignore,class_info))
+        print('教室列表:')
+        print(class_list)
+        
+
+        for date_info in range(1+row_ignore,xls.rows_conut,2):
+        #for date_info in range(1+row_ignore,4,2):
+            datetime_str = xls.getCell(date_info,'A').strftime('%Y-%m-%d')
+            print(xls.getCell(date_info,'A').strftime('%Y-%m-%d'))
+            schedule[datetime_str]={}
+            schedule[datetime_str]['Morning']={}
+            schedule[datetime_str]['Afternoon']={}
+            for class_info in range(1+columns_ignore,xls.columns_conut):
+                class_name = class_list[class_info-1-columns_ignore]
+                schedule[datetime_str]['Morning'][class_name]={}
+                schedule[datetime_str]['Afternoon'][class_name]={}
+                if xls.sht.Cells(date_info,class_info).Interior.ColorIndex == 1:
+                    schedule[datetime_str]['Morning'][class_name]['isavailable'] = 0
+                else:
+                    schedule[datetime_str]['Morning'][class_name]['isavailable'] = 1
+                if xls.sht.Cells(date_info+1,class_info).Interior.ColorIndex == 1:
+                    schedule[datetime_str]['Afternoon'][class_name]['isavailable'] = 0
+                else:
+                    schedule[datetime_str]['Afternoon'][class_name]['isavailable'] = 1
+        
+        print(schedule)
+        
+        #将dict类型转化为str
+        schedule_str = json.dumps(schedule)
+        
+        #将str类型转化为dict
+        schedule_dict = json.loads(schedule_str)
+
+        print(schedule_dict)
+        '''
         print(xls.getCell(3,'C'))
         print(xls.getCell(3,'D'))
         print(xls.sht.Cells(3, 'D').Interior.ColorIndex)
@@ -75,7 +122,8 @@ if __name__ == "__main__":
         xls.sht.Cells(3, 'F').Interior.ColorIndex=1
         print(xls.sht.Range('C3','C4').MergeCells == True)
         print(xls.sht.Range('F3','F4').MergeCells == True)
-        xls.save(os.getcwd()+'\\'+filename_save)    
+        '''
+        #xls.save(os.getcwd()+'\\'+filename_save)    
         print("finish")
     finally:
         xls.close() 
