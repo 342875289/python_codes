@@ -60,13 +60,15 @@ class easyExcel:
         "copy sheet"     
         self.shts(1).Copy(None,shts(1))    
 
-def readTemplate(filename_open,row_ignore=2,columns_ignore=3):
+def readTemplate(row_ignore=2,columns_ignore=3):
+    filename_open = 'template.xlsx'
+    xls = ''
     try:
         xls = easyExcel(os.getcwd()+'\\'+filename_open)
         xls.setSheet('宣讲会教室借用')
         schedule = {}
         class_list = []
-        date_num  = xls.rows_conut/2 - 1
+        date_num  = int(xls.rows_conut/2 - 1)
         class_num = xls.columns_conut - 3
         #print('读取到:%d行,%d列'% (xls.rows_conut,xls.columns_conut))
         #print('折合:%d天,%d个教室'% (date_num,class_num))
@@ -92,16 +94,34 @@ def readTemplate(filename_open,row_ignore=2,columns_ignore=3):
                     schedule[datetime_str]['Afternoon'][class_name]['isavailable'] = 0
                 else:
                     schedule[datetime_str]['Afternoon'][class_name]['isavailable'] = 1
-        '''
-        #将dict类型转化为str
-        schedule_str = json.dumps(schedule)
-        #将str类型转化为dict
-        schedule_dict = json.loads(schedule_str)
-        #print(schedule_dict)
-        '''
+        #保存为txt
+        with open('templateSaves.txt', 'w') as f:
+            f.write(str(date_num)+'\n')
+            f.write(str(class_num)+'\n')
+            f.write(','.join(class_list)+'\n')
+            f.write(json.dumps(schedule))
+            
+    except BaseException:
+        date_num = 0
+        class_num = 0
+        class_list = ''
+        schedule = ''
     finally:
-        xls.close() 
+        if xls:
+            xls.close() 
     return [date_num,class_num,class_list,schedule]
+def reloadTemplate():
+    try:
+        with open('templateSaves.txt', 'r') as f:
+            date_num = int(f.readline())
+            class_num = int(f.readline())
+            class_list = f.readline().split(',')
+            schedule = json.loads(f.readline())
+    except BaseException:
+        [date_num,class_num,class_list,schedule] = readTemplate()
+    return [date_num,class_num,class_list,schedule]
+
+
 def cleanTemplate(filename_open,filename_save,row_ignore=2,columns_ignore=3):
     try:
         xls = easyExcel(os.getcwd()+'\\'+filename_open)
@@ -122,13 +142,17 @@ if __name__ == "__main__":
     filename_save = 'template2.xlsx'
     row_ignore = 2
     columns_ignore = 3
-    '''
-    [date_num,class_num,class_list,schedule] = readTemplate(filename_open,row_ignore,columns_ignore)
+    
+    [date_num,class_num,class_list,schedule] = reloadTemplate()
     print('读取到:%d天,%d个教室'% (date_num,class_num))
     print(class_list)
+    
     #print(schedule)
     '''
-    cleanTemplate(filename_open,filename_save)
+    schedule = reloadTemplate()
+    print(schedule)
+    #cleanTemplate(filename_open,filename_save)
+    '''
     print("finish")
         
     #xls.close()
