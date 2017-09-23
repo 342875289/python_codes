@@ -3,7 +3,33 @@ import time
 import re
 
 from bs4 import BeautifulSoup
+
+year_now = time.localtime().tm_year
+month_now = time.localtime().tm_mon
+
+def splitDateTime(datetime):
+    global year_now,month_now
+    if datetime:
+        month_enterprise = int(datetime[0:2])
+        if month_now < 9:
+            if month_enterprise >= 9:
+                year_enterprise = year_now - 1
+            else:
+                year_enterprise = year_now
+        else:
+            if month_enterprise < 9:
+                year_enterprise = year_now + 1
+            else:
+                year_enterprise = year_now
+        date = str(year_enterprise) + '-' +  datetime[0:5]
+        time = datetime[6:18]
+    else:
+        date = ''
+        time = ''
+    return [date,time]
+
 def process_enterprise_inPages(context,the_lastone_id = 0):
+    
     enterprise_list_not_confirm =[]
     enterprise_list_confirmed =[]
     enterprise_items = {}
@@ -27,11 +53,11 @@ def process_enterprise_inPages(context,the_lastone_id = 0):
         enterprise_items['id']                  = p_enterprise_id.search(tds[1].a['href']).group(1)
         enterprise_items['person']              = tds[2].get_text().strip()
         enterprise_items['phone']               = tds[3].get_text().strip()
-        enterprise_items['time_display']        = tds[4].get_text().strip()
+        [enterprise_items['date_display'] ,enterprise_items['time_display'] ]       = splitDateTime(tds[4].get_text().strip())
         enterprise_items['place_display']       = p_place.findall(tds[5].get_text())
-        enterprise_items['time_writtenTest']    = tds[6].get_text().strip()
+        [enterprise_items['date_writtenTest'] ,enterprise_items['time_writtenTest'] ]       = splitDateTime(tds[6].get_text().strip())
         enterprise_items['place_writtenTest']   = p_place.findall(tds[7].get_text())
-        enterprise_items['time_faceTest']       = tds[8].get_text().strip()
+        [enterprise_items['date_faceTest'] ,enterprise_items['time_faceTest'] ]       = splitDateTime(tds[8].get_text().strip())
         enterprise_items['place_faceTest']      = p_place.findall(tds[9].get_text())
         enterprise_items['department']          = department
         enterprise_items['state_comfirm']       = tds[13].get_text().strip()
