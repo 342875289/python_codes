@@ -80,20 +80,31 @@ def readTemplate(row_ignore=2,columns_ignore=3):
             datetime_str = xls.getCell(date_info,'A').strftime('%Y-%m-%d')
             #print(xls.getCell(date_info,'A').strftime('%Y-%m-%d'))
             schedule[datetime_str]={}
-            schedule[datetime_str]['Morning']={}
+            schedule[datetime_str]['Allday']={}
             schedule[datetime_str]['Afternoon']={}
-            for class_info in range(1+columns_ignore,xls.columns_conut):
+            schedule[datetime_str]['Night']={}
+            for class_info in range(1+columns_ignore,xls.columns_conut+1):
                 class_name = class_list[class_info-1-columns_ignore]
-                schedule[datetime_str]['Morning'][class_name]={}
-                schedule[datetime_str]['Afternoon'][class_name]={}
-                if xls.sht.Cells(date_info,class_info).Interior.ColorIndex == 1:
-                    schedule[datetime_str]['Morning'][class_name]['isavailable'] = 0
+                if class_name[0] == 'F':
+                    schedule[datetime_str]['Allday'][class_name]={}
+                    if xls.sht.Cells(date_info,class_info).Interior.ColorIndex == 1:
+                        schedule[datetime_str]['Allday'][class_name]['isavailable'] = 0
+                    else:
+                        schedule[datetime_str]['Allday'][class_name]['isavailable'] = 1
+                        schedule[datetime_str]['Allday'][class_name]['enterprise_list'] = []
                 else:
-                    schedule[datetime_str]['Morning'][class_name]['isavailable'] = 1
-                if xls.sht.Cells(date_info+1,class_info).Interior.ColorIndex == 1:
-                    schedule[datetime_str]['Afternoon'][class_name]['isavailable'] = 0
-                else:
-                    schedule[datetime_str]['Afternoon'][class_name]['isavailable'] = 1
+                    schedule[datetime_str]['Afternoon'][class_name]={}
+                    schedule[datetime_str]['Night'][class_name]={}
+                    if xls.sht.Cells(date_info,class_info).Interior.ColorIndex == 1:
+                        schedule[datetime_str]['Afternoon'][class_name]['isavailable'] = 0
+                    else:
+                        schedule[datetime_str]['Afternoon'][class_name]['isavailable'] = 1
+                        schedule[datetime_str]['Afternoon'][class_name]['enterprise_list'] = []
+                    if xls.sht.Cells(date_info+1,class_info).Interior.ColorIndex == 1:
+                        schedule[datetime_str]['Night'][class_name]['isavailable'] = 0
+                    else:
+                        schedule[datetime_str]['Night'][class_name]['isavailable'] = 1
+                        schedule[datetime_str]['Night'][class_name]['enterprise_list'] = []
         #保存为txt
         with open('templateSaves.txt', 'w') as f:
             f.write(str(date_num)+'\n')
@@ -101,7 +112,8 @@ def readTemplate(row_ignore=2,columns_ignore=3):
             f.write(','.join(class_list)+'\n')
             f.write(json.dumps(schedule))
             
-    except BaseException:
+    except BaseException as msg:#BaseException
+        print(msg)
         date_num = 0
         class_num = 0
         class_list = ''
