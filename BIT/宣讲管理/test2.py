@@ -1,10 +1,4 @@
-a=[]
+a=[1,2,3]
 
-def t(a):
-    a.append('1')
-    print(a)
-    
-
-t(a)
-t(a)
-print(a)
+ss='dd%d'%a[0]
+print(ss)

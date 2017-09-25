@@ -53,61 +53,74 @@ print('有'+str(len(enterprise_list_confirmed))+'项申请已处理:')
 print(class_list)
 
 
-def query_schedule(enterprise,schedule):
-    #宣讲
-    if enterprise['date_display']:
-        try:
-            time = p_split_time.search(enterprise['time_display'])
-            if int(time.group(1)) <= 17:
-                time_part = 'Afternoon'
-            else:
-                time_part = 'Night'
-            for place in enterprise['place_display']:
-                #print(enterprise_new['date_display'])
-                #print(place_display)
-                if place[0] == 'F':
-                    time_part = 'Allday'
-                schedule_one = schedule[str(enterprise['date_display'])][time_part][place]
-                if schedule_one['isavailable'] :
-                    new_start = int(time.group(1))*100 + int(time.group(2))
-                    new_end = int(time.group(3))*100 + int(time.group(4))
-                    conflict = 0
-                    for enterprise_exist in schedule_one['enterprise_list']:
-                        exist_time = p_split_time.search(enterprise_exist['time'])
-                        exist_start = int(exist_time.group(1))*100 + int(exist_time.group(2))
-                        exist_end = int(exist_time.group(3))*100 + int(exist_time.group(4))
-                        if not (((new_start <= exist_start) and (new_start <= exist_end)) or ((new_end >= exist_start) and (new_end >= exist_end))):
-                            conflict = 1
-                    if conflict:
-                        print(enterprise)
-                        print('时间段冲突')
+def query_schedule(enterprise_list,schedule,query_type):
+    success_list = []
+    fail_list = []
+    p_split_time = re.compile(r'(\d+):(\d+)-(\d+):(\d+)')
+    if type(enterprise_list)!= list:
+        enterprise_list = [enterprise_list]
+    for enterprise in enterprise_list:
+        if query_type == 'all':
+            query_type_list = ['display','writtenTest','faceTest']
+            for query_type in query_type_list:
+                
+            if query_type == 'display':
+                enterprise_date = enterprise['date_display']
+                enterprise_time = enterprise['time_display']
+                enterprise_place = enterprise['place_display']
+                error_header = '宣讲教室查询时发生错误:'
+            elif query_type == 'writtenTest':
+            elif query_type == 'faceTest':
+            
+            #宣讲
+            if enterprise_date:
+                try:
+                    time = p_split_time.search(enterprise_time)
+                    if int(time.group(1)) <= 17:
+                        time_part = 'Afternoon'
                     else:
-                        one_case={}
-                        one_case['id'] = enterprise['id']
-                        one_case['name'] = enterprise['name']
-                        one_case['time'] = enterprise['time_display']
-                        one_case['type'] = 'display'
-                        schedule_one['enterprise_list'].append(one_case)
-                        #print("加入成功")
-                else:
-                    print('d所选时间段教师不可用:')
-                    print('name:%s,date:%s,class:%s,time:%s'% (enterprise['name'],enterprise['date_display'],enterprise['place_display'],enterprise['time_display'] ) )
+                        time_part = 'Night'
+                    for place in enterprise_place:
+                        if place[0] == 'F':
+                            time_part = 'Allday'
+                        schedule_one = schedule[str(enterprise_date)][time_part][place]
+                        if schedule_one['isavailable'] :
+                            new_start = int(time.group(1))*100 + int(time.group(2))
+                            new_end = int(time.group(3))*100 + int(time.group(4))
+                            conflict = 0
+                            for enterprise_exist in schedule_one['enterprise_list']:
+                                exist_time = p_split_time.search(enterprise_exist['time'])
+                                exist_start = int(exist_time.group(1))*100 + int(exist_time.group(2))
+                                exist_end = int(exist_time.group(3))*100 + int(exist_time.group(4))
+                                if not (((new_start <= exist_start) and (new_start <= exist_end)) or ((new_end >= exist_start) and (new_end >= exist_end))):
+                                    conflict = 1
+                            if conflict:
+                                fail_list.append([error_header+'时间段冲突',enterprise]])
+                            else:
+                                one_case={}
+                                one_case['id'] = enterprise['id']
+                                one_case['name'] = enterprise['name']
+                                one_case['time'] = enterprise['time_display']
+                                one_case['type'] = 'display'
+                                schedule_one['enterprise_list'].append(one_case)
+                                #print("加入成功")
+                        else:
+                            fail_list.append([error_header+'所选时间段教师不可用','name:%s,date:%s,class:%s,time:%s'% (enterprise['name'],enterprise_date,enterprise_place,enterprise_time ]])
+                            continue
+                except  KeyError as msg:#KeyError
+                    fail_list.append([error_header+'已分配的教室不在可用教室表中','name:%s,date:%s,class:%s,time:%s'% (enterprise['name'],enterprise_place,str(msg),enterprise_time ]])
+                except  AttributeError as msg:#KeyError
+                    fail_list.append([error_header+'详细时间未填写','name:%s,date:%s,class:%s,time:%s'% (enterprise['name'],enterprise_place,enterprise_place,enterprise_time ]])
+                except  BaseException as msg:#KeyError
+                    fail_list.append([error_header+'发生严重错误','name:%s,date:%s,class:%s,time:%s'% (enterprise['name'],enterprise_place,enterprise_place,enterprise_time ]])
+                    traceback.print_exc()
                     continue
-        except  KeyError as msg:#KeyError
-            print('d已分配的教室不在可用教室表中:'+enterprise['name']+'使用了'+str(msg))
-        except  AttributeError as msg:#KeyError
-            print('d详细时间未填写')
-        except  BaseException as msg:#KeyError
-            print('d错误信息:')
-            print(enterprise)
-            traceback.print_exc()
-            continue
                     
 
 
 
 
-p_split_time = re.compile(r'(\d+):(\d+)-(\d+):(\d+)')
+
 for enterprise_new in enterprise_list_confirmed:
     #print(enterprise_new['name'])
     #宣讲
