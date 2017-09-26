@@ -45,7 +45,7 @@ def search_available(enterprise,schedule,class_list):
                             exist_time = p_split_time.search(enterprise_exist['time'])
                             exist_start = int(exist_time.group(1))*100 + int(exist_time.group(2))
                             exist_end = int(exist_time.group(3))*100 + int(exist_time.group(4))
-                            if not (((new_start <= exist_start) and (new_start <= exist_end)) or ((new_end >= exist_start) and (new_end >= exist_end))):
+                            if not ((new_start >= exist_end)  or ((new_end <= exist_start) )):
                                 conflict = conflict + 1
                                 break
                         if not conflict:
@@ -57,14 +57,14 @@ def search_available(enterprise,schedule,class_list):
             available_class[query_type] =  success_list        
     return available_class     
 
-def conflict_test_schedule(enterprise_list,schedule,query_type):
+def conflict_test_schedule(enterprise_list,schedule,query_types):
     success_list = []
     fail_list = []
     p_split_time = re.compile(r'(\d+)[:：](\d+)-(\d+)[:：](\d+)')#用于提取时间段
     if type(enterprise_list)!= list:#针对输入单个企业的情况作处理
         enterprise_list = [enterprise_list]
     for enterprise in enterprise_list:#遍历企业名单,逐个处理
-        if query_type == 'all':#查询全部的教室安排
+        if query_types == 'all':#查询全部的教室安排
             query_type_list = ['display','writtenTest','faceTest']
         else:
             query_type_list = [query_type]
@@ -105,7 +105,7 @@ def conflict_test_schedule(enterprise_list,schedule,query_type):
                                 exist_time = p_split_time.search(enterprise_exist['time'])
                                 exist_start = int(exist_time.group(1))*100 + int(exist_time.group(2))
                                 exist_end = int(exist_time.group(3))*100 + int(exist_time.group(4))
-                                if not (((new_start <= exist_start) and (new_start <= exist_end)) or ((new_end >= exist_start) and (new_end >= exist_end))):
+                                if not ((new_start >= exist_end)  or ((new_end <= exist_start) )):
                                     conflict = conflict + 1
                                     break
                             if conflict:
@@ -157,17 +157,17 @@ def conflict_test_schedule(enterprise_list,schedule,query_type):
     return [success_list,fail_list]                
 
 
-def add_schedule(enterprise_list,schedule,query_type):
+def add_schedule(enterprise_list,schedule,query_types):
     success_list = []
     fail_list = []
     p_split_time = re.compile(r'(\d+)[:：](\d+)-(\d+)[:：](\d+)')#用于提取时间段
     if type(enterprise_list)!= list:#针对输入单个企业的情况作处理
         enterprise_list = [enterprise_list]
     for enterprise in enterprise_list:#遍历企业名单,逐个处理
-        if query_type == 'all':#查询全部的教室安排
+        if query_types == 'all':#查询全部的教室安排
             query_type_list = ['display','writtenTest','faceTest']
         else:
-            query_type_list = [query_type]
+            query_type_list = [query_types]
         for query_type in query_type_list:
             #根据宣讲/笔试/面试类型做处理
             if query_type == 'display':
@@ -205,7 +205,7 @@ def add_schedule(enterprise_list,schedule,query_type):
                                 exist_time = p_split_time.search(enterprise_exist['time'])
                                 exist_start = int(exist_time.group(1))*100 + int(exist_time.group(2))
                                 exist_end = int(exist_time.group(3))*100 + int(exist_time.group(4))
-                                if not (((new_start <= exist_start) and (new_start <= exist_end)) or ((new_end >= exist_start) and (new_end >= exist_end))):
+                                if not ((new_start >= exist_end)  or ((new_end <= exist_start) )):
                                     conflict = conflict + 1
                                     break
                             if conflict:

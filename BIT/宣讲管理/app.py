@@ -45,38 +45,49 @@ print('有'+str(len(enterprise_list_not_confirm))+'项申请待处理:')
 for enterprise in enterprise_list_not_confirm: 
     print(enterprise['name'])   
 print('有'+str(len(enterprise_list_confirmed))+'项申请已处理:')
-for i in range(30): 
-    enterprise = enterprise_list_confirmed[i]
+[success_list,fail_list] = mainFuncs.add_schedule(enterprise_list_confirmed,schedule,'all')
+'''
+#for i in range(30): 
+    #enterprise = enterprise_list_confirmed[i]
+for enterprise in enterprise_list_confirmed: 
     print(enterprise['name']) 
     [success_list,fail_list] = mainFuncs.add_schedule(enterprise_list_confirmed,schedule,'all')
-    print(success_list)
-    print(fail_list)
-    
-'''
+    for case in success_list:
+        print(case['name'])
+        print(case['type']) 
+        print(case['time'])  
+        print(case['place']) 
+    for case in fail_list:
+        print(case['error_reason'])
+        print(case['error_msg']) 
+        print(case['error_type'])
+ '''   
+
+
 [success_list,fail_list] = mainFuncs.add_schedule(enterprise_list_confirmed,schedule,'all')
 #print(schedule)
 
-print('插入成功%d家企业'%len(success_list))
-print('插入失败%d家企业'%len(fail_list))
+print('插入成功%d条企业申请'%len(success_list))
+print('插入失败%d条企业申请'%len(fail_list))
+'''
 for enterprise in success_list:
     print(enterprise['name'])
 for enterprise in fail_list:
     print(enterprise['error_msg'])
-    '''
 
-'''
 for fail_case in fail_list:
     if fail_case['error_type'] == 'no_class':
         continue
     print(fail_case['error_reason'])
     print(fail_case['error_msg'])
     print(fail_case['error_type'])
+'''
+
 
 for enterprise in enterprise_list_not_confirm:
     available_class = mainFuncs.search_available(enterprise,schedule,class_list)
     print(enterprise['name'])
-    for type in available_class:
-        if available_class[type]:
-            print('%s:%s'%(type,available_class[type]))
+    for class_type in available_class:
+        if available_class[class_type]:
+            print('%s:%s'%(class_type,available_class[class_type]))
 
-'''
