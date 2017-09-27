@@ -45,8 +45,8 @@ account_num = 0
 #选择进第几个服务器
 server_num = 10#注意！！！变更服务器还需要修改websocketIP
 #
-level_oldaccount = 59
-level_limit = 45
+level_oldaccount = 65
+level_limit = 48
 #以下参数不需要修改
 #读取账号登录需要的信息
 account_name = ''
@@ -457,7 +457,7 @@ def AutoKill():
             #领取鱼干
             ws.send(lxh_growup_api.api_get_fish()) 
             while 1 :
-                if (level > (level_oldaccount - 20)) and (isBoss == 1) :
+                if (level >= (level_oldaccount - 20)) and (isBoss == 1) :
                     print("发现Boss,退出扫荡")
                     count_isBoss = count_isBoss + 1
                     break
@@ -525,7 +525,7 @@ def onekey():
         #领取鱼干
         ws.send(lxh_growup_api.api_get_fish()) 
         while 1 :
-            if (level > (level_oldaccount - 20)) and (isBoss == 1) :
+            if (level >= (level_oldaccount - 20)) and (isBoss == 1) :
                 print("发现Boss,退出扫荡")
                 count_isBoss = count_isBoss + 1
                 break

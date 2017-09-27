@@ -22,7 +22,7 @@ isDebug = 0
 #计算当天日期
 today = datetime.date.today()
 #计算第二天的日期
-tomorrow = today + datetime.timedelta(days=0) 
+tomorrow = today + datetime.timedelta(days=0) #days=1 收集次日信息
 print("今天是"+today.isoformat())
 print("尝试获取明天"+tomorrow.isoformat()+"的信息")
 
