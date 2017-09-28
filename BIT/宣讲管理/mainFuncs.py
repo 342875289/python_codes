@@ -26,6 +26,7 @@ def search_available(enterprise,schedule,class_list):
             error_header = '面试教室查询时发生错误:'
         #对于一个企业的一种情况作处理,以日期是否填写作为是否处理的依据
         if enterprise_date:
+            #print(enterprise)
             time = p_split_time.search(enterprise_time)
             if int(time.group(1)) <= 12:#需要上午能用的教室
                 time_part_list = ['Allday']
@@ -219,6 +220,7 @@ def add_schedule(enterprise_list,schedule,query_types):
                                 success_case['id'] = enterprise['id']
                                 success_case['name'] = enterprise['name']
                                 success_case['time'] = enterprise_time
+                                success_case['date'] = enterprise_date
                                 success_case['place'] = enterprise_place
                                 success_case['type'] = query_type
                                 success_list.append(success_case)
@@ -255,6 +257,7 @@ def add_schedule(enterprise_list,schedule,query_types):
                     fail_case['error_msg'] = 'name:%s,date:%s,class:%s,time:%s,error:%s'% (enterprise['name'],enterprise_date,enterprise_place,enterprise_time,str(msg))
                     fail_case['error_type'] = 'undef_fault'
                     fail_list.append(fail_case)
+    #print(success_list)
     return [success_list,fail_list]                
 
 

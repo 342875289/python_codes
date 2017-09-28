@@ -9,8 +9,11 @@ month_now = time.localtime().tm_mon
 
 def splitDateTime(datetime):
     global year_now,month_now
+    delay = 0
     if datetime:
-        month_enterprise = int(datetime[0:2])
+        if datetime.count('-') == 3: #带年份
+            delay = 5            
+        month_enterprise = int(datetime[0+delay:2+delay])
         if month_now < 9:
             if month_enterprise >= 9:
                 year_enterprise = year_now - 1
@@ -21,8 +24,8 @@ def splitDateTime(datetime):
                 year_enterprise = year_now + 1
             else:
                 year_enterprise = year_now
-        date = str(year_enterprise) + '-' +  datetime[0:5]
-        time = datetime[6:18]
+        date = str(year_enterprise) + '-' +  datetime[0+delay:5+delay]
+        time = datetime[6+delay:18+delay]
     else:
         date = ''
         time = ''

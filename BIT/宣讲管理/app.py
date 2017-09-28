@@ -63,11 +63,10 @@ for enterprise in enterprise_list_confirmed:
         print(case['error_type'])
  '''   
 
-
-[success_list,fail_list] = mainFuncs.add_schedule(enterprise_list_confirmed,schedule,'all')
 #print(schedule)
 
 print('插入成功%d条企业申请'%len(success_list))
+#print(success_list)
 print('插入失败%d条企业申请'%len(fail_list))
 '''
 for enterprise in success_list:
@@ -90,4 +89,3 @@ for enterprise in enterprise_list_not_confirm:
     for class_type in available_class:
         if available_class[class_type]:
             print('%s:%s'%(class_type,available_class[class_type]))
-
