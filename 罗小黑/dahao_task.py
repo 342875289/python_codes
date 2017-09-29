@@ -359,6 +359,7 @@ def oldaccount_dailytask():
     #领取活跃度奖励
     ws.send(lxh_growup_api.api_newAccountTask7(20))
     ws.send(lxh_growup_api.api_newAccountTask7(50))
+    strengthen_soul()
     print("大号完成每日任务")
     
 def oldaccount_dailytask_once():

@@ -73,19 +73,21 @@ for enterprise in success_list:
     print(enterprise['name'])
 for enterprise in fail_list:
     print(enterprise['error_msg'])
-
+'''
 for fail_case in fail_list:
     if fail_case['error_type'] == 'no_class':
         continue
     print(fail_case['error_reason'])
     print(fail_case['error_msg'])
     print(fail_case['error_type'])
+
+
 '''
-
-
 for enterprise in enterprise_list_not_confirm:
     available_class = mainFuncs.search_available(enterprise,schedule,class_list)
+    print('')
     print(enterprise['name'])
     for class_type in available_class:
         if available_class[class_type]:
             print('%s:%s'%(class_type,available_class[class_type]))
+'''

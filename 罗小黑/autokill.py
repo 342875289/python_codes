@@ -460,18 +460,6 @@ def dailyTask_once():
 if __name__ == "__main__":
     #global ws,isBoss,equipId,item_number,count_finish,count_isBoss,count_noTili
 
-    
-    logout_in_oldaccount()
-    time.sleep(1)
-    checklogin()
-    time.sleep(1)
-    oldaccount_dailytask()
-    time.sleep(1)
-    oldaccount_dailytask_once()
-    time.sleep(1)
-    logout()
-    time.sleep(1)
-
     for i in range(1,len(account)+1):#len(account)+1
         equipId = 0
         item_number[0] = 0

@@ -467,8 +467,6 @@ if __name__ == "__main__":
     time.sleep(1)
     oldaccount_dailytask()
     time.sleep(1)
-    oldaccount_dailytask_once()
-    time.sleep(1)
     logout()
     time.sleep(1)
 
