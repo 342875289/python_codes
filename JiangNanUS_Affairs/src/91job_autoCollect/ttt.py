@@ -1,4 +1,4 @@
-import urllib.request
+﻿import urllib.request
 import re,os
 import smtplib
 from email.mime.text import MIMEText
@@ -9,8 +9,7 @@ import datetime
 from_addr = "mon_dayuan@sina.com"
 password = "labcat127"
 # 输入收件人地址:
-to_addr1 = "342875289@qq.com"
-to_addr2 = "625259906@qq.com"
+to_addr = "342875289@qq.com"
 # 输入SMTP服务器地址:
 smtp_server = "smtp.sina.com"
 #调试参数
@@ -23,7 +22,7 @@ isDebug = 0
 #计算当天日期
 today = datetime.date.today()
 #计算第二天的日期
-tomorrow = today + datetime.timedelta(days=1) 
+tomorrow = today + datetime.timedelta(days=0) #days=1 收集次日信息
 print("今天是"+today.isoformat())
 print("尝试获取明天"+tomorrow.isoformat()+"的信息")
 
@@ -61,7 +60,7 @@ post_data_code= urllib.parse.urlencode(post_data).encode(encoding='UTF8')
 response = urllib.request.urlopen(request,data=post_data_code)
 the_page = response.read()
 data = the_page.decode('unicode_escape')
-#print(data)
+print(data)
 
 str_email=""
 #筛选日期参数
@@ -222,26 +221,22 @@ else:
 #在这里插入检测时间安排是否的程序   
 list_all = list_zhaopin + list_xuanjiang
 list_all.sort(key=getKey)
-#print(list_zhaopin)
-#print(list_xuanjiang)
-#print(list_all)      
+print(list_zhaopin)
+print(list_xuanjiang)
+print(list_all)      
 #发送邮件
 if(isSendEmail==1):
     msg = MIMEText(str_email, 'plain', 'utf-8')
-    msg['To'] = Header('<'+to_addr1+'>','utf-8')
+    msg['To'] = Header('<'+to_addr+'>','utf-8')
     msg['From'] = Header("Xiao_Ming<mon_dayuan@sina.com>")
     msg['Subject'] = Header(str_date+"招聘宣讲信息", 'utf-8')
     server = smtplib.SMTP_SSL(smtp_server, 465)
     server.set_debuglevel(1)
     server.login(from_addr,password)
-    server.sendmail(from_addr,to_addr1, msg.as_string())
-    msg['To'] = Header('<'+to_addr2+'>','utf-8')
-    server.sendmail(from_addr,to_addr2, msg.as_string())
+    server.sendmail(from_addr,to_addr, msg.as_string())
     server.quit()
     print("邮件发送完成")
 else:
     print("按照选择没有发送邮件")
-    
 txt_file.write(str_email)
 txt_file.close()
-

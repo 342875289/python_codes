@@ -23,7 +23,7 @@ def book_list(request):
             except PurchaseCase.DoesNotExist:
                 isavailable = 0
                 count = 0
-            list.append({'book_name':b.book_name,'book_id':b.id,'isavailable':isavailable,'count':count,'url':b.ebook.url})
+            list.append({'book_name':b.book_name,'book_id':b.id,'isavailable':isavailable,'count':count})
         json_obj['book_list'] = list
         json_obj['state'] = 'success'
         return JsonResponse(json_obj)
@@ -31,7 +31,7 @@ def book_list(request):
         json_obj['state'] = 'fail'
         json_obj['msg'] = 'Please login first'
         return JsonResponse(json_obj)
-
+'''
 def book_detail(request,book_id):
     json_obj = {}
     try:
@@ -42,7 +42,7 @@ def book_detail(request,book_id):
         json_obj['state'] = 'fail'
         json_obj['msg'] = 'Book does not exist'
     return HttpResponse(json.dumps(json_obj))
-
+'''
 def userlogin(request):
     json_obj = {}
     user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
