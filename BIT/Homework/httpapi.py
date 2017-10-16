@@ -23,7 +23,7 @@ response = urllib.request.urlopen(request,data=post_data_code)
 context = response.read().decode('utf-8')
 print(context)
 
-
+'''
 url='http://'+ip+':8000/book_list'
 request = urllib.request.Request(url)
 request.add_header('Accept', '*/*')
@@ -45,8 +45,8 @@ response = urllib.request.urlopen(request,data=post_data_code)
 context = response.read().decode('utf-8')
 print(context)
 
-
-
+'''
+'''
 param ={'book_id':4,
         }
 post_data_code= urllib.parse.urlencode(param).encode(encoding='UTF8')
@@ -58,8 +58,18 @@ response = urllib.request.urlopen(request,data=post_data_code)
 context = response.read().decode('utf-8')
 print(context)
 
-
-
+'''
+param ={'book_id':4,
+        'mac':'91-90-96-D9-9B-07'
+        }
+post_data_code= urllib.parse.urlencode(param).encode(encoding='UTF8')
+url='http://'+ip+':8000/key'
+request = urllib.request.Request(url)
+request.add_header('Accept', '*/*')
+request.add_header('Content-Type',' application/x-www-form-urlencoded')
+response = urllib.request.urlopen(request,data=post_data_code)
+context = response.read().decode('utf-8')
+print(context)
 
 
     

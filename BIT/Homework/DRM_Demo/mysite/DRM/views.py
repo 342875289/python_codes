@@ -29,7 +29,7 @@ def book_list(request):
         return JsonResponse(json_obj)
     else:
         json_obj['state'] = 'fail'
-        json_obj['msg'] = 'Please login first'
+        json_obj['msg'] = '还未登陆,请先登录'
         return JsonResponse(json_obj)
 '''
 def book_detail(request,book_id):
@@ -78,6 +78,30 @@ def download(request):
          raise Http404("File does not exist")
     '''  
 
+def getkey(request):
+    book_id=request.POST['book_id']
+    mac = request.POST['mac']
+    try:
+        case = PurchaseCase.objects.get(user=request.user,book_id=book_id)
+        mac_list = case.mac_list
+        count = case.count
+        if mac_list:
+            mac_list = mac_list.split(',')
+        else:
+            mac_list = []
+        if mac in mac_list:
+            return  JsonResponse({'state':'success','msg':'此mac已经在许可列表中,秘钥放行','key':case.book.key})
+        elif count:
+            mac_list.append(mac)
+            case.mac_list = ','.join(mac_list)
+            case.count = count - 1
+            case.save()
+            return  JsonResponse({'state':'success','msg':'此mac不在在许可列表中,消耗一次拷贝次数,秘钥放行','key':case.book.key})
+        else:
+            return  JsonResponse({'state':'fail','msg':'账号无可用拷贝数'})
+    except PurchaseCase.DoesNotExist:
+        return  JsonResponse({'state':'fail','msg':'没有权限,请先购买'})
+    
 def purchase(request):
     if request.user.is_authenticated:
         times = int(request.POST['times'])
@@ -91,14 +115,7 @@ def purchase(request):
             case = PurchaseCase.objects.create(user=request.user,book = Book.objects.get(pk=book_id),count = times)
             return JsonResponse({'state':'success','msg':'购买成功'})
     else:
-        return JsonResponse({'state':'fail','msg':'Please login first'})
-    
-def tt(request):
-    if request.user.is_authenticated:
-    # Do something for authenticated users.
-        return HttpResponse("测试通过")
-    else:
-    # Do something for anonymous users.
-        return HttpResponse("请先登录")
+        return JsonResponse({'state':'fail','msg':'还未登陆,请先登录'})
+   
         
     
