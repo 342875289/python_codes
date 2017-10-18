@@ -33,7 +33,31 @@ account = [ {'account_name':"mingg1",'device_id':"1965FBA4-13AA-49C7-BC00-B63566
             {'device_id': '1965FBA4-13AA-49C7-BC00-B6356627C74B', 'sign': 'd08f94853189928fe9ed71871362417f', 'account_name': 'mingg22'},
             {'device_id': '1965FBA4-13AA-49C7-BC00-B6356627C74B', 'sign': '585d7e326abf93cf2f2ea8065409b914', 'account_name': 'mingg23'},
             {'device_id': '1965FBA4-13AA-49C7-BC00-B6356627C74B', 'sign': '1b00ab88fcf4ba9fb1bce4f9f3b9ebc7', 'account_name': 'mingg24'},
-
+            {'sign': 'e9d7ef63556b60acfa7e2b1d1fc80ab9', 'device_id': '1965FBA4-13AA-49C7-BC00-B6356627C74B', 'account_name': 'mingg25'},
+            {'sign': '73552ea9ad0fdcc0737539ccf6816ed2', 'device_id': '1965FBA4-13AA-49C7-BC00-B6356627C74B', 'account_name': 'mingg26'},
+            {'sign': '161f35c041e8714ff161b87c18334b53', 'device_id': '1965FBA4-13AA-49C7-BC00-B6356627C74B', 'account_name': 'mingg27'},
+            {'sign': '1eb9767ba23d991b8afd13ddb568b80a', 'device_id': '1965FBA4-13AA-49C7-BC00-B6356627C74B', 'account_name': 'mingg28'},
+            {'sign': '2f62689050f0bbaf511222c8dd9280c0', 'device_id': '1965FBA4-13AA-49C7-BC00-B6356627C74B', 'account_name': 'mingg29'},
+            {'sign': 'a22eb35a14910babf83c2eaa84198e4c', 'device_id': '1965FBA4-13AA-49C7-BC00-B6356627C74B', 'account_name': 'mingg30'},
+            {'sign': '04416791b724bd886b7cc6177aed8b4f', 'device_id': '1965FBA4-13AA-49C7-BC00-B6356627C74B', 'account_name': 'mingg31'},
+            {'sign': '28c8ecdcb4db5e3552ae6a6b9e9f21d0', 'device_id': '1965FBA4-13AA-49C7-BC00-B6356627C74B', 'account_name': 'mingg32'},
+            {'sign': '8cd2f086a1cfe6b0d4c29180c529d683', 'device_id': '1965FBA4-13AA-49C7-BC00-B6356627C74B', 'account_name': 'mingg33'},
+            {'sign': '6e3e260ce7e11135d752a76b803897ed', 'device_id': '1965FBA4-13AA-49C7-BC00-B6356627C74B', 'account_name': 'mingg34'},
+            {'sign': '1740d542fdf18587529e743e87e71375', 'device_id': '1965FBA4-13AA-49C7-BC00-B6356627C74B', 'account_name': 'mingg35'},
+            {'sign': '7937201f2f706baf891464cf82ee0cdb', 'device_id': '1965FBA4-13AA-49C7-BC00-B6356627C74B', 'account_name': 'mingg36'},
+            {'sign': '78b9a696d70f2033d4e5b5414407f254', 'device_id': '1965FBA4-13AA-49C7-BC00-B6356627C74B', 'account_name': 'mingg37'},
+            {'sign': '013cda36dfdf793375a7229413a0b07d', 'device_id': '1965FBA4-13AA-49C7-BC00-B6356627C74B', 'account_name': 'mingg38'},
+            {'sign': '2adb5fde1f09b9ace6001ffb0af92279', 'device_id': '1965FBA4-13AA-49C7-BC00-B6356627C74B', 'account_name': 'mingg39'},
+            {'sign': '1e17cede7daf83079d91b813a264069a', 'device_id': '1965FBA4-13AA-49C7-BC00-B6356627C74B', 'account_name': 'mingg40'},
+            {'sign': '71d88905436d1585bb4d1d69803c775b', 'device_id': '1965FBA4-13AA-49C7-BC00-B6356627C74B', 'account_name': 'mingg41'},
+            {'sign': 'ca8056f9ae96384b4f40e62ec89522e5', 'device_id': '1965FBA4-13AA-49C7-BC00-B6356627C74B', 'account_name': 'mingg42'},
+            {'sign': 'a22736c89fc6ef316f217ff9f324cfa4', 'device_id': '1965FBA4-13AA-49C7-BC00-B6356627C74B', 'account_name': 'mingg43'},
+            {'sign': 'edc56f6459aec3d1dbfa16e1ffce8650', 'device_id': '1965FBA4-13AA-49C7-BC00-B6356627C74B', 'account_name': 'mingg44'},
+            {'sign': '228a94be2a1cf9b5033493c8580a484f', 'device_id': '1965FBA4-13AA-49C7-BC00-B6356627C74B', 'account_name': 'mingg45'},
+            {'sign': '36bfab56db3814c4e79c4721f8639ae0', 'device_id': '1965FBA4-13AA-49C7-BC00-B6356627C74B', 'account_name': 'mingg46'},
+            {'sign': 'f3926d73010df8db99aca1be0a6cd8eb', 'device_id': '1965FBA4-13AA-49C7-BC00-B6356627C74B', 'account_name': 'mingg47'},
+            {'sign': '4a64ac607f9601f7293249a7f921cab6', 'device_id': '1965FBA4-13AA-49C7-BC00-B6356627C74B', 'account_name': 'mingg48'},
+            {'sign': '26d5d2c32285c69d37ccaa2213ac51c7', 'device_id': '1965FBA4-13AA-49C7-BC00-B6356627C74B', 'account_name': 'mingg49'},
 ]
 
 
@@ -44,8 +68,6 @@ account_num = 0
 #选择进第几个服务器
 server_num = 10#注意！！！变更服务器还需要修改websocketIP
 #
-level_oldaccount = 59
-level_limit = 43
 #以下参数不需要修改
 #读取账号登录需要的信息
 account_name = ''
@@ -136,7 +158,7 @@ def on_message(ws, message):
     elif MsgID == 14006:
         Tili = message_json['Msg']['RetData']['Wealth']['Tili']
         level = message_json['Msg']['RetData']['BaseInfo']['Level'] 
-        print("成功完成扫荡,体力剩余:%d,当前等级为:%d"%(Tili,level))
+        #print("成功完成扫荡,体力剩余:%d,当前等级为:%d"%(Tili,level))
         label_tili.config(text='体力:'+str(Tili))
         label_accountName.config(text=account_name+'等级:'+str(level))
         tili = Tili
@@ -259,7 +281,7 @@ def step_two():
     #添加大号为好友
     #ws.send(lxh_growup_api.api_addfriend(9401559))
     #加入公会
-    ws.send(lxh_growup_api.api_addLegion(50197))
+    #ws.send(lxh_growup_api.api_addLegion(50197))
     #投资会馆
     ws.send(lxh_growup_api.api_newAccountTask6(1,2))
     ws.send(lxh_growup_api.api_newAccountTask6(1,2))
