@@ -1,34 +1,37 @@
 import urllib.request
-import re,os
-import smtplib
+import re,os,sys,io
+import smtplib,time
 from email.mime.text import MIMEText
 from email.header import Header
-import datetime
+import datetime,gzip
+import win32con
+import win32clipboard
+
+
 #输入参数
 #输入Email地址和口令:
 from_addr = "mon_dayuan@sina.com"
 password = "labcat127"
 # 输入收件人地址:
-to_addr1 = "342875289@qq.com"
+to_addr1 = "277693035@qq.com"
 to_addr2 = "625259906@qq.com"
 # 输入SMTP服务器地址:
 smtp_server = "smtp.sina.com"
 #调试参数
 #是否发送邮件
 isSendEmail = 0
+isWriteFile = 1
+isWriteClipboard = 1
 #是否打开调试模式
 isDebug = 0
-
 
 #计算当天日期
 today = datetime.date.today()
 #计算第二天的日期
-tomorrow = today + datetime.timedelta(days=1) 
+tomorrow = today + datetime.timedelta(days=0) 
 print("今天是"+today.isoformat())
 print("尝试获取明天"+tomorrow.isoformat()+"的信息")
 
-
-txt_file = open(os.path.dirname(os.path.realpath(__file__))+'\\'+tomorrow.isoformat()+'的招聘会宣讲会信息.txt','w')
 
 
 #HTTPCookiesProcessor
@@ -48,7 +51,7 @@ request.add_header('Content-Type','application/x-www-form-urlencoded')
 request.add_header('DNT','1')
 request.add_header('Referer','http://jiangnan.91job.gov.cn/')
 request.add_header('X-Requested-With','XMLHttpRequest')
-#request.add_header('Accept-Encoding','gzip,deflate')
+request.add_header('Accept-Encoding','gzip,deflate')
 request.add_header('Accept-Language','zh-CN')
 request.add_header('Cookie', 'PHPSESSID=4adcb2a5571b6b6724600; TS_think_language=zh-CN;TS_LOGGED_USER=fQkWi20ie94JrnxRpBXxIIX88;Hm_lvt_dd3ea352543392a029ccf9da1be54a50=1461215406,1461300191,1461414536,1461417954;Hm_lpvt_dd3ea352543392a029ccf9da1b')
 
@@ -59,9 +62,8 @@ post_data_code= urllib.parse.urlencode(post_data).encode(encoding='UTF8')
 
 #发送请求
 response = urllib.request.urlopen(request,data=post_data_code)
-the_page = response.read()
-data = the_page.decode('unicode_escape')
-#print(data)
+#the_page = response.read()
+data = gzip.decompress(response.read()).decode('unicode_escape')
 
 str_email=""
 #筛选日期参数
@@ -120,18 +122,18 @@ for i in range(num_split-1):#减一为了屏蔽最后的时间日期数据
             #print(the_page)
             if(a_day_a_piece[0:3]=="招聘会"):
                 num_zhaopin=num_zhaopin+1
-                time=p_item_detail_time1.search(the_page).group(4)
+                time_t=p_item_detail_time1.search(the_page).group(4)
                 location=p_item_detail_location1.search(the_page).group(1)
-                print(time)
+                #print(time_t)
     #            print(location)
-                list_zhaopin.append([enterpriseName,time,location,0,link])
+                list_zhaopin.append([enterpriseName,time_t,location,0,link])
             elif(a_day_a_piece[0:3]=="宣讲会"):
                 num_xuanjiang=num_xuanjiang+1
-                time=p_item_detail_time2.search(the_page).group(2)
+                time_t=p_item_detail_time2.search(the_page).group(2)
                 location=p_item_detail_location2.search(the_page).group(1)
-     #          print(time)
+    #          print(time)
     #           print(location)
-                list_xuanjiang.append([enterpriseName,time,location,0,link])
+                list_xuanjiang.append([enterpriseName,time_t,location,0,link])
     else :
       #  print(str(i)+" NO")
         continue
@@ -195,7 +197,7 @@ else:
                 str_email +="晚上"+str(time_division_zhaopin[2])+"场"+"\n"
             time_division = list_zhaopin[i][3]
             time_division_i=1
-        print(str(time_division_i)+'.'+list_zhaopin[i][0]+","+list_zhaopin[i][1]+','+list_zhaopin[i][2]+',详情请查看:'+list_zhaopin[i][4])
+        #print(str(time_division_i)+'.'+list_zhaopin[i][0]+","+list_zhaopin[i][1]+','+list_zhaopin[i][2]+',详情请查看:'+list_zhaopin[i][4])
         str_email +=str(time_division_i)+'.'+list_zhaopin[i][0]+","+list_zhaopin[i][1]+','+list_zhaopin[i][2]+',详情请查看:'+list_zhaopin[i][4]+"\n"
         time_division_i=time_division_i+1
     time_division = 0
@@ -216,7 +218,9 @@ else:
                 str_email +="晚上"+str(time_division_xuanjiang[2])+"场"+"\n"
             time_division = list_xuanjiang[i][3]
             time_division_i=1
-        print(str(time_division_i)+'.'+list_xuanjiang[i][0]+","+list_xuanjiang[i][1]+','+list_xuanjiang[i][2]+',详情请查看:'+list_xuanjiang[i][4])
+        #print(str(time_division_i)+'.'+list_xuanjiang[i][0]+","+list_xuanjiang[i][1]+','+list_xuanjiang[i][2]+',详情请查看:'+list_xuanjiang[i][4])
+        
+        
         str_email +=str(time_division_i)+'.'+list_xuanjiang[i][0]+","+list_xuanjiang[i][1]+','+list_xuanjiang[i][2]+',详情请查看:'+list_xuanjiang[i][4]+"\n"
         time_division_i=time_division_i+1
 #在这里插入检测时间安排是否的程序   
@@ -238,10 +242,19 @@ if(isSendEmail==1):
     msg['To'] = Header('<'+to_addr2+'>','utf-8')
     server.sendmail(from_addr,to_addr2, msg.as_string())
     server.quit()
-    print("邮件发送完成")
-else:
-    print("按照选择没有发送邮件")
-    
-txt_file.write(str_email)
-txt_file.close()
+    print("宣讲会的详细内容已通过邮件发送")
 
+if isWriteFile:
+    txt_file = open(os.path.dirname(os.path.realpath(__file__))+'\\'+tomorrow.isoformat()+'的招聘会宣讲会信息.txt','w',encoding='utf-8')
+    txt_file.write(str_email)
+    txt_file.close()
+    print("宣讲会的详细内容已保存到txt")
+
+if isWriteClipboard:
+    win32clipboard.OpenClipboard()
+    win32clipboard.EmptyClipboard()
+    win32clipboard.SetClipboardData(win32con.CF_UNICODETEXT, str_email)
+    win32clipboard.CloseClipboard()
+    print("宣讲会的详细内容已复制到剪切板")
+print('程序会在三秒后关闭')
+time.sleep(3)

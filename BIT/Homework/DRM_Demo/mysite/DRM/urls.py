@@ -11,4 +11,6 @@ urlpatterns = [
     url(r'^download$', views.download, name='download'),
     url(r'^key$', views.getkey, name='getkey'),
     url(r'^purchase$', views.purchase, name='purchase'),
+    url(r'^getcode$', views.getcode, name='getcode'),
+    url(r'^usecode$', views.usecode, name='usecode'),
 ]
