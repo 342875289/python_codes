@@ -9,6 +9,7 @@ urlpatterns = [
     url(r'^login$', views.userlogin, name='userlogin'),
     url(r'^logout$', views.userlogout, name='userlogout'),
     url(r'^download$', views.download, name='download'),
+    url(r'^upload$', views.upload, name='upload'),
     url(r'^key$', views.getkey, name='getkey'),
     url(r'^purchase$', views.purchase, name='purchase'),
     url(r'^getcode$', views.getcode, name='getcode'),

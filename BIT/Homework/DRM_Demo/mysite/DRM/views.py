@@ -53,12 +53,14 @@ def userlogout(request):
     json_obj['msg'] = '注销成功'
     return JsonResponse(json_obj)
 def download(request):
-    try:
-        case = PurchaseCase.objects.get(user=request.user,book_id=request.POST['book_id'])
-        return FileResponse(open(case.book.ebook.name,'rb'))
-    except PurchaseCase.DoesNotExist:
-        raise Http404("File does not exist")
-
+    if request.user.is_authenticated:
+        try:
+            case = PurchaseCase.objects.get(user=request.user,book_id=request.POST['book_id'])
+            return FileResponse(open(case.book.ebook.name,'rb'))
+        except PurchaseCase.DoesNotExist:
+            raise Http404("File does not exist")
+    else:
+        return JsonResponse({'state':'fail','msg':'还未登陆,请先登录'})
 def getkey(request):
     if request.user.is_authenticated:
         book_id=request.POST['book_id']
@@ -138,4 +140,15 @@ def usecode(request):
     else:
         return JsonResponse({'state':'fail','msg':'还未登陆,请先登录'})
         
-    
+def upload(request):
+    if request.user.is_authenticated:
+        book_name=request.POST['book_name']
+        key=request.POST['key']
+        ebook=request.POST['ebook']
+        with open('ebook/'+book_name+'.txt','w') as f: 
+            f.write(ebook)
+        book = Book.objects.create(book_name=book_name,key = key,ebook = 'ebook/'+book_name+'.txt')
+        return JsonResponse({'state':'success','msg':'上传成功'})
+        
+    else:
+        return JsonResponse({'state':'fail','msg':'还未登陆,请先登录'})
