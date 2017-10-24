@@ -24,7 +24,7 @@ response = urllib.request.urlopen(request,data=post_data_code)
 context = response.read().decode('utf-8')
 print(context)
 
-
+'''
 url='https://'+ip+'/book_list'
 request = urllib.request.Request(url)
 request.add_header('Accept', '*/*')
@@ -32,13 +32,13 @@ request.add_header('Content-Type',' application/x-www-form-urlencoded')
 response = urllib.request.urlopen(request)
 context = response.read().decode('utf-8')
 print(context)
-
+'''
 '''
 param ={'book_id':4,
         'times':1,
         }
 post_data_code= urllib.parse.urlencode(param).encode(encoding='UTF8')
-url='https://'+ip+':7000/purchase'
+url='https://'+ip+'/purchase'
 request = urllib.request.Request(url)
 request.add_header('Accept', '*/*')
 request.add_header('Content-Type',' application/x-www-form-urlencoded')
@@ -51,7 +51,7 @@ print(context)
 param ={'book_id':4,
         }
 post_data_code= urllib.parse.urlencode(param).encode(encoding='UTF8')
-url='http://'+ip+':8000/download'
+url='http://'+ip+'/download'
 request = urllib.request.Request(url)
 request.add_header('Accept', '*/*')
 request.add_header('Content-Type',' application/x-www-form-urlencoded')
@@ -65,7 +65,7 @@ param ={'book_id':4,
         'mac':'91-90-96-D9-9B-07'
         }
 post_data_code= urllib.parse.urlencode(param).encode(encoding='UTF8')
-url='http://'+ip+':8000/key'
+url='http://'+ip+'/key'
 request = urllib.request.Request(url)
 request.add_header('Accept', '*/*')
 request.add_header('Content-Type',' application/x-www-form-urlencoded')
@@ -74,4 +74,41 @@ context = response.read().decode('utf-8')
 print(context)
 '''
 
-    
+'''
+param ={'book_id':6,
+        }
+post_data_code= urllib.parse.urlencode(param).encode(encoding='UTF8')
+url='https://'+ip+'/getcode'
+request = urllib.request.Request(url)
+request.add_header('Accept', '*/*')
+request.add_header('Content-Type',' application/x-www-form-urlencoded')
+response = urllib.request.urlopen(request,data=post_data_code)
+context = response.read().decode('unicode_escape')
+print(context)
+'''
+'''
+param ={'code':'l5W0qBwHftcTzZnjVMI3JYXUyDvrORp7',
+        }
+post_data_code= urllib.parse.urlencode(param).encode(encoding='UTF8')
+url='https://'+ip+'/usecode'
+request = urllib.request.Request(url)
+request.add_header('Accept', '*/*')
+request.add_header('Content-Type',' application/x-www-form-urlencoded')
+response = urllib.request.urlopen(request,data=post_data_code)
+context = response.read().decode('unicode_escape')
+print(context)
+'''
+'''
+data = open('test.txt','rb').read()
+param ={'book_name':'111',
+        'key':'J2TXVRPX0NV4H0N0Z8282R00F8D8T84H',
+        'ebook':data}
+post_data_code= urllib.parse.urlencode(param).encode(encoding='UTF8')
+url='https://'+ip+'/upload'
+request = urllib.request.Request(url)
+request.add_header('Accept', '*/*')
+request.add_header('Content-Type',' application/x-www-form-urlencoded')
+response = urllib.request.urlopen(request,data=post_data_code)
+context = response.read().decode('unicode_escape')
+print(context)
+'''
