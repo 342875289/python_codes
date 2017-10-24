@@ -31,7 +31,7 @@ def book_list(request):
         return JsonResponse(json_obj)
     else:
         json_obj['state'] = 'fail'
-        json_obj['msg'] = '还未登陆,请先登录'
+        json_obj['msg'] = '还未登录,请先登录'
         return JsonResponse(json_obj)
 
 def userlogin(request):
@@ -40,10 +40,10 @@ def userlogin(request):
     if user is not None:
         login(request, user)
         json_obj['state'] = 'success'
-        json_obj['msg'] = '登陆成功'
+        json_obj['msg'] = '登录成功'
     else:
         json_obj['state'] = 'fail'
-        json_obj['msg'] = '登陆失败'
+        json_obj['msg'] = '登录失败'
     return HttpResponse(json.dumps(json_obj))
 
 def userlogout(request):
@@ -60,7 +60,7 @@ def download(request):
         except PurchaseCase.DoesNotExist:
             raise Http404("File does not exist")
     else:
-        return JsonResponse({'state':'fail','msg':'还未登陆,请先登录'})
+        return JsonResponse({'state':'fail','msg':'还未登录,请先登录'})
 def getkey(request):
     if request.user.is_authenticated:
         book_id=request.POST['book_id']
@@ -86,7 +86,7 @@ def getkey(request):
         except PurchaseCase.DoesNotExist:
             return  JsonResponse({'state':'fail','msg':'没有权限,请先购买'})
     else:
-        return JsonResponse({'state':'fail','msg':'还未登陆,请先登录'})
+        return JsonResponse({'state':'fail','msg':'还未登录,请先登录'})
 def purchase(request):
     if request.user.is_authenticated:
         times = int(request.POST['times'])
@@ -100,7 +100,7 @@ def purchase(request):
             case = PurchaseCase.objects.create(user=request.user,book = Book.objects.get(pk=book_id),count = times)
             return JsonResponse({'state':'success','msg':'购买成功'})
     else:
-        return JsonResponse({'state':'fail','msg':'还未登陆,请先登录'})
+        return JsonResponse({'state':'fail','msg':'还未登录,请先登录'})
  
 def getcode(request):
     if request.user.is_authenticated:
@@ -119,7 +119,7 @@ def getcode(request):
         except PurchaseCase.DoesNotExist:
             return  JsonResponse({'state':'fail','msg':'生成兑换码失败,没有权限,请先购买'})
     else:
-        return JsonResponse({'state':'fail','msg':'还未登陆,请先登录'})
+        return JsonResponse({'state':'fail','msg':'还未登录,请先登录'})
 
 def usecode(request):
     if request.user.is_authenticated:
@@ -138,7 +138,7 @@ def usecode(request):
         except GiftCode.DoesNotExist:
             return  JsonResponse({'state':'fail','msg':'兑换失败,原因:兑换码错误'})
     else:
-        return JsonResponse({'state':'fail','msg':'还未登陆,请先登录'})
+        return JsonResponse({'state':'fail','msg':'还未登录,请先登录'})
         
 def upload(request):
     if request.user.is_authenticated:
@@ -151,4 +151,4 @@ def upload(request):
         return JsonResponse({'state':'success','msg':'上传成功'})
         
     else:
-        return JsonResponse({'state':'fail','msg':'还未登陆,请先登录'})
+        return JsonResponse({'state':'fail','msg':'还未登录,请先登录'})
