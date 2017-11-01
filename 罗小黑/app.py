@@ -330,9 +330,9 @@ def do_dailyTask_once(isgetExp):
     ws.send(lxh_growup_api.api_newAccountTask9()) 
     ws.send(lxh_growup_api.api_newAccountTask9()) 
     #投资会馆等级
-    ws.send(lxh_growup_api.api_newAccountTask6(5,1))
-    ws.send(lxh_growup_api.api_newAccountTask6(5,1))
-    ws.send(lxh_growup_api.api_newAccountTask6(6,1))
+    ws.send(lxh_growup_api.api_newAccountTask6(2,1))
+    ws.send(lxh_growup_api.api_newAccountTask6(2,1))
+    ws.send(lxh_growup_api.api_newAccountTask6(1,1))
     #购买商店物品两次
     ws.send(lxh_growup_api.api_get_shop_items())
     time.sleep(5)
