@@ -98,9 +98,9 @@ response = urllib.request.urlopen(request,data=post_data_code)
 context = response.read().decode('unicode_escape')
 print(context)
 '''
-'''
+
 data = open('test.txt','rb').read()
-param ={'book_name':'111',
+param ={'book_name':'测试',
         'key':'J2TXVRPX0NV4H0N0Z8282R00F8D8T84H',
         'ebook':data}
 post_data_code= urllib.parse.urlencode(param).encode(encoding='UTF8')
@@ -111,4 +111,3 @@ request.add_header('Content-Type',' application/x-www-form-urlencoded')
 response = urllib.request.urlopen(request,data=post_data_code)
 context = response.read().decode('unicode_escape')
 print(context)
-'''
