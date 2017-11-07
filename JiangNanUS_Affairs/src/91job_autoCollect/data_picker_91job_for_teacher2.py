@@ -108,7 +108,7 @@ for i in range(num_split-1):#减一为了屏蔽最后的时间日期数据
         if(isDebug==1):
             for i in range(num_a_day_split):
                 print('a_day_data_after_split:'+a_day_data_after_split[i])
-        for j in range(1,num_a_day_split):
+        for j in range(1,num_a_day_split,2):
             a_day_a_piece = a_day_data_after_split[j]
             link = "http://jiangnan.91job.gov.cn"+p_getItemDetail.search(a_day_a_piece).group(1)
             enterpriseName = p_getItemDetail.search(a_day_a_piece).group(3)
